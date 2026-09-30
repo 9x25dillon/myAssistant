@@ -92,3 +92,32 @@ All entries below are **Proposed, pending Checkpoint A**.
   `ctxr audit` flags equal keys with different values across the packs selected for one injection.
 - **Consequences.** Adds a Phase 1 spec field and a planted-contradiction harness. Free-text decisions stay allowed but are unauditable,
   and the audit reports what share of decisions it could check.
+
+## D-014: The Porter connector is read-only, offline and dependency-free
+
+- **Context.** Porter couples many repos. A blast-radius tool that runs git, installs packages or writes files would itself widen the blast radius it reports.
+- **Decision.**
+  - `plugins/porter-blast-radius` ships a stdio MCP server built on Node's standard library, with the framing and negotiation of the MCP TypeScript SDK 1.31.0.
+  - Git facts are read from `.git` files, never by running `git`.
+  - Every path is confined to the allowed roots.
+  - Output is sanitized and budgeted.
+  - The engine moves into the plugin and the design-doc tool imports it, so there is one copy.
+- **Consequences.** The connector's own model (`model/connector.model.json`) shows no execution, no persistence and contained path arguments, and the hygiene test enforces the absent capabilities. Richer discovery that would need execution, such as resolving workspaces with package managers, is out of scope.
+
+## D-015: Connect kgirl through its Atlas database, not its CLI or MCP server
+
+- **Context.** kgirl's Atlas already computes cross-repo imports, symbol references and clone hashes. Calling `python -m kgirl.harness` would mean code execution. Chaining MCP servers would route every result through the agent.
+- **Decision.** `atlas_import` opens `atlas.db` with SQLite's read-only flag (`node:sqlite`, Node 22.13+). It checks the columns it reads and emits a coupling model. The schema is copied verbatim into `test/atlas-schema.sql` as a contract, and an opt-in test runs kgirl's own indexer and `blast`.
+- **Consequences.** Blast radii agree with kgirl's (47/23 on the report's hub module). An Atlas schema change fails loudly, naming the missing columns. Bare-name resolutions are flagged, and can be excluded.
+
+## D-016: Persistence loops are checked by strongly connected components as well as by cycles
+
+- **Context.** In the kgirl model, the loop `agent → server → store → server → agent` passes the server twice. Elementary-cycle enumeration therefore missed a real uncontained persistence loop.
+- **Decision.** `runChecks` also removes every edge that a full integrity control closes. Any agent that still shares a strongly connected component with a data node is an uncontained loop, unless an accepted cycle names both. Elementary cycles remain in reports, because they show concrete paths.
+- **Consequences.** The relay model still passes, since its single SCC exposure (cc-session, store-data) is D-008. Un-accepting it now fails in both ways.
+
+## D-017: Models carry proposed controls and are evaluated as built on request
+
+- **Context.** Design reviews need to compare today's system with the proposed fixes, without keeping two model files.
+- **Decision.** A control's `status: "proposed"` marks it as not yet built. `as_built: true` on `check_model`, `blast_radius` and `risk_register` treats those controls as absent, and `risk_register` then ranks by inherent RPN.
+- **Consequences.** One file answers both "what is exposed today?" and "what would this fix buy?". Nearly every control in the relay model is `proposed`, so an as-built check of the relay design reports that almost nothing is built yet, which is accurate at Phase 0.

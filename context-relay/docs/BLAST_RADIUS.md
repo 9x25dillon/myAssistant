@@ -56,6 +56,10 @@ prompt injection; the wrapper does the reverse.
 agent (where content is acted on). A loop is *contained* if any edge on it has a full integrity control. Otherwise it must be listed in
 `acceptedCycles` with a decision, or the check fails (G-TRUST-CYCLE).
 
+Elementary cycles miss loops that visit a node twice. So the check also removes every edge that a full integrity control closes, and
+flags any agent that still shares a strongly connected component with a data node (D-016). This second test found the Soup loop in the
+kgirl harness (KGIRL_HARNESS.md).
+
 **Control value.** For each control: the number of (source, node) pairs that become unmitigated when that control alone is disabled,
 summed over all views.
 

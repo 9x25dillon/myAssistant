@@ -63,10 +63,14 @@ test('mutation: removing the trust gate opens an unaccepted persistent loop', ()
   assert.ok(runChecks(m).some((p) => p.startsWith('G-TRUST-CYCLE: uncontained')));
 });
 
-test('mutation: un-accepting the continuity loop fails the check', () => {
+test('mutation: un-accepting the continuity loop fails the check, as cycles and as shared exposure', () => {
   const m = clone();
   m.acceptedCycles = [];
-  assert.equal(runChecks(m).filter((p) => p.startsWith('G-TRUST-CYCLE')).length, 2);
+  const problems = runChecks(m).filter((p) => p.startsWith('G-TRUST-CYCLE'));
+  assert.equal(problems.filter((p) => p.includes('uncontained persistent loop')).length, 2);
+  assert.deepEqual(problems.filter((p) => p.includes('share an uncontained loop')), [
+    'G-TRUST-CYCLE: cc-session and store-data share an uncontained loop (capture, cc-session, hooks, mcp, store-data)',
+  ]);
 });
 
 test('mutation: a brief budget that leaves no room for the wrapper breaks W1', () => {
