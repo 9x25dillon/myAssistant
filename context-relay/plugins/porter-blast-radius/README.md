@@ -4,7 +4,7 @@ A Claude Code plugin for **Porter**, the harness that couples several repos so t
 
 It contains:
 
-- **An MCP connector (`blast-radius`)** with 8 read-only tools, written with no dependencies on Node's standard library.
+- **An MCP connector (`blast-radius`)** with 9 read-only tools, written with no dependencies on Node's standard library.
 - **A skill (`blast-radius`)** that tells Claude when to use the tools and how to read their results.
 
 The connector analyzes a **coupling model**: a JSON graph of components and typed edges. You can get one in three ways:
@@ -49,6 +49,7 @@ Requirements:
 | `emergent_use_cases` | Which chains of repo capabilities line up across repos, and how fragile is each? |
 | `risk_register` | Ranked failure modes, control value, open loops (`as_built` ranks before proposed fixes) |
 | `atlas_import` | Coupling model from a kgirl Atlas: repos or files, import and clone edges; bare-name guesses flagged |
+| `merge_models` | One graph from several sources (for example `porter_discover` plus `atlas_import`); repos with the same remote become one node |
 | `porter_discover` | Coupling model from local repos, with evidence for every edge |
 
 Results report nodes at three levels:
@@ -91,8 +92,8 @@ The self-model's top residual risk isn't a security risk. It is **reading an inc
 ## Tests
 
 ```sh
-node --test test/*.test.mjs                                            # 63 tests; the kgirl contract test skips without KGIRL_SRC
-KGIRL_SRC=/path/to/kgirl/src node --test test/atlas.test.mjs           # also runs kgirl's own indexer and blast radius
+node --test test/*.test.mjs                                            # 71 tests; the 2 kgirl contract tests skip without KGIRL_SRC
+KGIRL_SRC=/path/to/kgirl/src node --test test/atlas.test.mjs test/kgirl-model.test.mjs  # kgirl indexer, blast radius and MCP tool names
 ```
 
 The protocol follows the MCP TypeScript SDK 1.31.0:

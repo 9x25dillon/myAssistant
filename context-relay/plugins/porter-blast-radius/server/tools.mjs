@@ -6,7 +6,7 @@ import { realpathSync, statSync } from 'node:fs';
 import { atlasModel } from '../lib/atlas.mjs';
 import { cleanText, discover } from '../lib/discover.mjs';
 import {
-  VIEWS, applicableViews, asBuilt, checkWorkflow, controlValue, emergentUseCases, normalizeModel, persistentCycles, persistentExposure,
+  VIEWS, applicableViews, asBuilt, checkWorkflow, controlValue, emergentUseCases, mergeModels, normalizeModel, persistentCycles, persistentExposure,
   propagate, rankRisks, routeMatrix, runChecks, summarizeModel, validateModel,
 } from '../lib/engine.mjs';
 import { LIMITS, ToolError, confine, display, readBounded, rootsFromEnv, walk } from '../lib/fsguard.mjs';
@@ -327,6 +327,31 @@ export const TOOLS = [
       return {
         db: display(ctx.roots, real), summary: summarizeModel(r.model), warnings: r.warnings, evidence: r.evidence, model: r.model,
         next: 'Pass model as model_inline to blast_radius (direction downstream for what a change reaches, upstream for what can break it).',
+      };
+    },
+  },
+  {
+    name: 'merge_models',
+    title: 'Merge coupling models',
+    description: 'Unions several models into one graph, for example porter_discover (manifests, porter.json capabilities) with atlas_import (resolved imports, clones). Components with the same remote are unified under the first id; other collisions keep the first definition and are listed. Returns the merged model for model_inline.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        models: { type: 'array', items: { type: 'string' }, maxItems: 8, description: 'Model file paths inside the allowed roots.' },
+        models_inline: { type: 'array', items: { type: 'object' }, maxItems: 8, description: 'Model objects, for example the outputs of porter_discover and atlas_import.' },
+      },
+      additionalProperties: false,
+    },
+    handler(ctx, args) {
+      const inputs = [
+        ...(args.models ?? []).map((p) => loadModel(ctx, { model: p }, { strict: false }).m),
+        ...(args.models_inline ?? []).map((obj) => loadModel(ctx, { model_inline: obj }, { strict: false }).m),
+      ];
+      if (inputs.length < 2) throw new ToolError('pass at least two models (models and models_inline combined)');
+      const r = mergeModels(inputs);
+      return {
+        summary: summarizeModel(r.model), renamed: r.renamed, conflicts: r.conflicts.slice(0, 50), problems: runChecks(r.model).slice(0, 50), model: r.model,
+        next: 'Pass model as model_inline to blast_radius, emergent_use_cases or risk_register.',
       };
     },
   },
