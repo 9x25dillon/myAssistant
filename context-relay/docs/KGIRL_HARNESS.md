@@ -77,7 +77,12 @@ The model is [`examples/kgirl-harness.model.json`](../plugins/porter-blast-radiu
 - **As built, secrets in repos reach the scout model unmitigated.** Redaction only damps this, and a second barrier would need to be a different mechanism (see BLAST_RADIUS §5).
 - **The Porter bridge has one outflow**: sanitized output to the agent. It writes nothing into kgirl.
 
-### Proposed patches (for kgirl; not applied)
+### Patches
+
+The patches for KFM-01, KFM-02, KFM-03 and KFM-09, plus server instructions for KFM-04, are in
+[9x25dillon/kgirl#55](https://github.com/9x25dillon/kgirl/pull/55), stacked on the harness branch. 44 kgirl tests pass, 6 of them
+new. The model keeps these controls `proposed` until that PR merges, so `as_built` describes kgirl's default branch. The
+sketches below show the approach; the PR has the tested code.
 
 **KFM-01: stage model-written memory.** Don't route it through `curator.propose`. `propose` reinforces near-duplicates and credits every new fragment as "born from a verified success", which would let a model promote its own memory by repeating it.
 
@@ -128,6 +133,6 @@ result = {"protocolVersion": requested if requested in SUPPORTED else PROTOCOL_V
 
 ## 5. Open questions
 
-- **Merging models.** Merging an Atlas model with a `porter_discover` model (manifests plus `porter.json` capabilities) into one graph isn't implemented yet. Repo ids align (`repo:<slug>`), so it's a union with conflict rules.
+- **Merging models** is done: `merge_models` unions an Atlas model with a `porter_discover` model, and folds components with the same remote into one id. Atlas names repos after directories, discovery after remotes.
 - **Live model run.** The harness PR notes that live Ollama and Anthropic runs haven't been done. KFM-02 and KFM-05 matter most once they are.
 - **Real-world rate of bare-name guesses.** How many of the ATLAS_REPORT's cross-repo importers (for example orwells-egg and carryon → `al_uls_client.py`) are bare-name guesses? Running `atlas_import` on the full 33-repo database answers it in one call.

@@ -510,3 +510,70 @@ export function emergentUseCases(raw, { maxLength = 3, crossRepoOnly = true, lim
   out.sort((a, b) => a.capabilities.length - b.capabilities.length || a.fragility - b.fragility || a.id.localeCompare(b.id));
   return { total: out.length, useCases: out.slice(0, limit) };
 }
+
+// Union of several models into one graph. Components that name the same remote are one
+// repository seen by two sources (Atlas names repos after directories, discovery after
+// remotes), so later ids are renamed to the first id seen for that remote. Every other
+// collision keeps the first definition and is reported, never silently overwritten.
+export function mergeModels(raws) {
+  const models = raws.map(normalizeModel);
+  const out = normalizeModel({ modelVersion: 1, about: `Merged from ${models.length} models.` });
+  const renamed = [];
+  const conflicts = [];
+  const byId = new Map();
+  const byRemote = new Map();
+  models.forEach((m, mi) => {
+    const rename = new Map();
+    for (const c of m.components) {
+      const twin = c.remote ? byRemote.get(c.remote) : undefined;
+      const id = twin && twin !== c.id ? twin : c.id;
+      if (id !== c.id) { rename.set(c.id, id); renamed.push({ model: mi, from: c.id, to: id, remote: c.remote }); }
+      const prev = byId.get(id);
+      if (!prev) {
+        const comp = { ...c, id };
+        byId.set(id, comp);
+        out.components.push(comp);
+        if (c.remote) byRemote.set(c.remote, id);
+        continue;
+      }
+      for (const [k, v] of Object.entries(c)) {
+        if (k === 'id' || v === undefined) continue;
+        if (prev[k] === undefined) prev[k] = v;
+        else if (JSON.stringify(prev[k]) !== JSON.stringify(v) && k !== 'name' && k !== 'path') conflicts.push(`component ${id}.${k}: kept ${JSON.stringify(prev[k])}, dropped ${JSON.stringify(v)} (model ${mi})`);
+      }
+    }
+    const r = (id) => rename.get(id) ?? id;
+    for (const [id, c] of Object.entries(m.controls)) {
+      if (!out.controls[id]) out.controls[id] = c;
+      else if (out.controls[id].strength !== c.strength) conflicts.push(`control ${id}: kept strength ${out.controls[id].strength}, dropped ${c.strength} (model ${mi})`);
+    }
+    for (const [from, to, kind, controls = null, flag = null] of m.edges) {
+      const key = `${r(from)}>${r(to)}>${kind}>${flag ?? ''}`;
+      const existing = out.edges.find((e) => `${e[0]}>${e[1]}>${e[2]}>${e[4] ?? ''}` === key);
+      const ctl = controls === null ? [] : [].concat(controls);
+      if (!existing) {
+        const edge = [r(from), r(to), kind];
+        if (ctl.length || flag) edge.push(ctl.length ? ctl : null);
+        if (flag) edge.push(flag);
+        out.edges.push(edge);
+      } else if (ctl.length) {
+        const merged = [...new Set([...(existing[3] === null || existing[3] === undefined ? [] : [].concat(existing[3])), ...ctl])];
+        existing[3] = merged;
+      }
+    }
+    const seenCap = new Set(out.capabilities.map((c) => c.id));
+    for (const c of m.capabilities) {
+      if (seenCap.has(c.id)) { conflicts.push(`capability ${c.id}: kept the first definition (model ${mi})`); continue; }
+      seenCap.add(c.id);
+      out.capabilities.push({ ...c, repo: r(c.repo) });
+    }
+    const seenFm = new Set(out.failureModes.map((f) => f.id));
+    for (const f of m.failureModes) {
+      if (seenFm.has(f.id)) { conflicts.push(`failure mode ${f.id}: kept the first definition (model ${mi})`); continue; }
+      seenFm.add(f.id);
+      out.failureModes.push({ ...f, at: r(f.at) });
+    }
+    for (const a of m.acceptedCycles) out.acceptedCycles.push({ ...a, nodes: a.nodes.map(r) });
+  });
+  return { model: out, renamed, conflicts };
+}

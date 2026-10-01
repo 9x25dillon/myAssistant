@@ -20,7 +20,7 @@ It answers two questions with an executable model instead of prose alone:
 | [`model/relay-model.json`](model/relay-model.json) | The model: primitives, sinks, controls, components, edges, routes, workflows, failure modes |
 | [`tools/relay-model.mjs`](tools/relay-model.mjs) | Checker and analyzer (Node ≥ 18, no dependencies) |
 | [`tools/relay-model.test.mjs`](tools/relay-model.test.mjs) | 44 tests, including mutation tests that break the model on purpose |
-| [`plugins/porter-blast-radius/`](plugins/porter-blast-radius) | Claude Code plugin for Porter: a read-only MCP connector (8 tools) and a skill. It builds coupling models from local repos or a kgirl Atlas and computes blast radius, loops and emergent use cases. The engine above lives here. |
+| [`plugins/porter-blast-radius/`](plugins/porter-blast-radius) | Claude Code plugin for Porter: a read-only MCP connector (9 tools) and a skill. It builds coupling models from local repos or a kgirl Atlas and computes blast radius, loops and emergent use cases. The engine above lives here. |
 | [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) | Marketplace `porter`: `claude plugin marketplace add ./context-relay` |
 | [`docs/KGIRL_HARNESS.md`](docs/KGIRL_HARNESS.md) | Inspection of the kgirl harness (Atlas, Soup, Hermes, Jev), the Atlas bridge, cross-checks against kgirl's own results, findings and proposed patches |
 

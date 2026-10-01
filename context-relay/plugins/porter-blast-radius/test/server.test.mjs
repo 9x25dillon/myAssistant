@@ -41,10 +41,10 @@ test('initialize negotiates the protocol version like the SDK', async () => {
   assert.equal(unknown.parsed[0].result.protocolVersion, '2025-11-25');
 });
 
-test('tools/list: eight read-only tools with schemas and annotations', async () => {
+test('tools/list: nine read-only tools with schemas and annotations', async () => {
   const { parsed } = await session([init(), { jsonrpc: '2.0', method: 'notifications/initialized' }, { jsonrpc: '2.0', id: 2, method: 'tools/list' }], 2);
   const tools = parsed[1].result.tools;
-  assert.deepEqual(tools.map((t) => t.name), ['list_models', 'check_model', 'blast_radius', 'compose', 'emergent_use_cases', 'risk_register', 'atlas_import', 'porter_discover']);
+  assert.deepEqual(tools.map((t) => t.name), ['list_models', 'check_model', 'blast_radius', 'compose', 'emergent_use_cases', 'risk_register', 'atlas_import', 'merge_models', 'porter_discover']);
   for (const t of tools) {
     assert.equal(t.inputSchema.type, 'object');
     assert.equal(t.inputSchema.additionalProperties, false);
