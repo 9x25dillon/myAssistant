@@ -8,10 +8,11 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
 | Item | Repo / branch | State |
 |---|---|---|
 | Context Relay model and Porter plugin (`a106c34`, `b419b8f`) | myAssistant [#1](https://github.com/9x25dillon/myAssistant/pull/1) | **merged** (`d2ec0c6`) |
-| `merge_models`, `mcp-builder-hardened` skill, `sync-subtree.sh` (`156b379`, `438d3cb`, `ac57288`) and this file | myAssistant `claude/focused-maxwell-ao65tc` | **pushed, no PR yet** ([compare](https://github.com/9x25dillon/myAssistant/compare/main...claude/focused-maxwell-ao65tc)) |
-| Harness MCP hardening | kgirl [#55](https://github.com/9x25dillon/kgirl/pull/55), head `9b13ede`, base `main` | **open, mergeable**; `main` merged in, one conflict resolved |
-| `context-relay/` copy, kgirl-side Porter guide, skill symlink | kgirl `claude/porter-blast-radius` (`b09178b`) | **pushed, no PR yet** ([compare](https://github.com/9x25dillon/kgirl/compare/main...claude/porter-blast-radius)) |
-| Porter: agent-shell changes wait for the user | patern-coding [#2](https://github.com/9x25dillon/patern-coding/pull/2), head `dd034da` | **open, mergeable**; the live check in its test plan is unticked |
+| `merge_models`, `mcp-builder-hardened` skill, `sync-subtree.sh`, this file, and the forge-aware kgirl model (`156b379`, `438d3cb`, `ac57288`, `df86fb0`, `09c0eac`) | myAssistant [#2](https://github.com/9x25dillon/myAssistant/pull/2) | **merged** with this update. `09c0eac` came from a parallel session (`session_01CNxWA1c8cUHpQTsBZfwJwa`) |
+| Harness MCP hardening | kgirl [#55](https://github.com/9x25dillon/kgirl/pull/55) | **merged** (`cc92cd5`) |
+| `context-relay/` copy (synced to `09c0eac`), kgirl-side Porter guide, skill symlink | kgirl [#58](https://github.com/9x25dillon/kgirl/pull/58) | **merged** (`92e0545`). The parallel session made the second sync; `ae09aac` updated PORTER.md after #55 merged |
+| Porter: agent-shell changes wait for the user | patern-coding [#2](https://github.com/9x25dillon/patern-coding/pull/2) | **merged** (`2fc2aee`). The live check in its test plan is still unticked |
+| Skill-forge trust boundary (KFM-11) | kgirl [#59](https://github.com/9x25dillon/kgirl/pull/59), from the parallel session | **open, not reviewed by this session** |
 | `mcp-builder-hardened.zip` | delivered in chat; not in git (no archives in git) | to install: turn off the original `mcp-builder`, then upload under Settings → Capabilities → Skills |
 | Context Relay product (`ctxr`, skill, packs) | none | **not started**. Everything is Phase 0 design input. D-006 to D-017 are all *Proposed, pending Checkpoint A* |
 
@@ -19,10 +20,10 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
 
 | Suite | Result |
 |---|---|
-| `context-relay` in myAssistant | 111 pass, 1 skipped (the Atlas contract test needs `KGIRL_SRC`) |
-| The same suite inside kgirl, with `KGIRL_SRC=$PWD/src` | 112 pass, 0 skipped |
-| Skill checker | 9 pass |
-| kgirl#55 harness | 49 pass, 1 skipped (Playwright) |
+| `context-relay` in myAssistant | 115 pass, 2 skipped (both kgirl contract tests need `KGIRL_SRC`) |
+| The same suite on kgirl `main` (`#58` merged onto `cc92cd5`), with `KGIRL_SRC=$PWD/src` | 117 pass, 0 skipped |
+| Skill checker | 9 pass; 0 findings on kgirl's harness since #55 |
+| kgirl harness on `main` | OK, 1 skipped (Playwright); 49 tests at #55 |
 | patern-coding#2 | 55 pass |
 | nihiline and evolve, here | numpy tests skipped |
 | patern-coding `test_auric` | errors without torch, as it does on `main` |
@@ -78,16 +79,17 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
 | VIbe_coder, The_St, astro_caster | no secrets in recent commits |
 | kgirl root clutter | **intentional**: kgirl's HANDOFF §3 says keep it |
 
-## 3. Open findings (none fixed)
+## 3. Open findings
 
 | ID | Where | Finding | Level | Proposed fix |
 |---|---|---|---|---|
-| KFM-11 | kgirl `harness/skills.py` (`80f8b85`, on `main`) | The forge writes goal text, which a model supplies through `jev_swarm_task`, into `SKILL.md` with newlines intact, so it can add sections. It counts **staged** trajectories, and so does `Intuition.from_soup`. MCP `skills_forge` stores `active` skills with thresholds the caller picks. HANDOFF §6.2 plans to run `skills forge --export .claude/skills` | L1 | Collapse whitespace and control characters in goals and SEARCH args, and cap them. Count only `active` trajectories. Set a floor on MCP thresholds. Store forged skills `staged`. About 15 lines plus tests |
+| KFM-11 | kgirl `harness/skills.py` (`80f8b85`, on `main`) | The forge writes goal text, which a model supplies through `jev_swarm_task`, into `SKILL.md` with newlines intact, so it can add sections. It counts **staged** trajectories, and so does `Intuition.from_soup`. MCP `skills_forge` stores `active` skills with thresholds the caller picks | L1 | **Fix open in kgirl#59** (parallel session): `inline()`, active-only, staged skills, MCP floors. Modeled as C-FORGE-* (proposed) in `09c0eac` |
+| KFM-12 | kgirl `jev/swarm.py` `_learn` | A `jev_swarm_task` goal persists in an `active` trajectory outside the curator. It is recalled, replayed by intuition, and exportable by the forge. This loop stays open even with #59 | L1 (from `09c0eac`) | C-STAGE-TRAJECTORY: store MCP-started trajectories `staged` with `source="mcp"` |
 | KFM-05 / -07 | kgirl | Context packs go to the scout model unredacted. Bare-name import guesses aren't recorded as such | L1 / L0 | `C-REDACT`; a `resolution` column in `imports` |
 | NH-1 | nonsense-hotline `web.py` | No inbound SMS webhook: texting STOP to the hotline number does nothing | L1 (legal weight: ask counsel) | Twilio inbound handler that calls the existing opt-out path |
 | NH-2 | nonsense-hotline `dispatcher.py show_letters` | Letter text, user agent and IP are printed to the terminal unfiltered (escape-code injection) | L1 | Strip C0/C1 control characters before printing |
 | NH-3 / -4 | nonsense-hotline | Rate limits live in process memory. An opt-out is missed if its ElevenLabs webhook is lost | L1 | Shared store; periodic reconciliation |
-| DRIFT | `examples/kgirl-harness.model.json` | Describes the harness at `26748c4`. It lacks intuition, the forge and the `ecl_*`/`evolve_*` tools | L0 | Add components and edges, plus a contract test of tool names (§6) |
+| DRIFT | `examples/kgirl-harness.model.json` | **Resolved in `09c0eac`:** the model covers `main` and maps all 15 tools; a contract test compares them with `mcp_server._tools()`. **Remaining:** the #55 controls still read `proposed`, and `C-APPLY-CONFIRM` overstates the opt-in | L0 | §7.2(a) |
 
 ## 4. User preferences (binding)
 
@@ -146,17 +148,18 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
    ```
    If a PR merged, start follow-up work from the latest `main`. Never force-push: auto mode denies it, and merging `main` in keeps other people's checkouts valid.
 2. **Close the open loops in this order. Ask before starting each one.**
-   - **(a) PRs.** Ask whether to open them for myAssistant (3 commits plus this file) and kgirl `claude/porter-blast-radius`.
-   - **(b) When kgirl#55 merges:**
-     - In myAssistant, set `C-STAGE-MCP`, `C-VERIFY-ALLOWLIST` and `C-VERSION-NEGOTIATION` to `implemented`.
-     - Reword `C-APPLY-CONFIRM` to the real mechanism.
-     - Re-run `risk_register` with `as_built`.
-     - Then run `sh context-relay/tools/sync-subtree.sh` in kgirl. Pass the branch name until myAssistant's `main` has these commits.
-   - **(c) KFM-11** as its own small kgirl PR. Then add the forge and intuition to the kgirl model, with the tool-name contract test.
+   - **(a) #55 is merged, so update the model.** In myAssistant:
+     - Set `C-STAGE-MCP`, `C-VERIFY-ALLOWLIST` and `C-VERSION-NEGOTIATION` to `implemented`.
+     - Reword `C-APPLY-CONFIRM` to the real mechanism, a standing `KGIRL_MCP_APPLY=1` opt-in.
+     - Update the pinned expectations in `test/kgirl-model.test.mjs` and re-run `risk_register` with `as_built`.
+     - Then run `sh context-relay/tools/sync-subtree.sh` in kgirl. Its default, myAssistant `main`, now has everything.
+   - **(b) kgirl#59.** Review it, then decide whether to merge. Once it merges, set its C-FORGE-* controls to `implemented` the same way.
+   - **(c) KFM-12.** C-STAGE-TRAJECTORY, as one small kgirl PR.
    - **(d) Checkpoint A** for Context Relay: the name, plus D-006 to D-017 for approval. Phase 1 code starts only after that.
    - **(e) nonsense-hotline:** NH-1 (STOP handler) and NH-2 (strip control characters).
 3. **Working rules that would have saved time here:**
-   - Edit `context-relay/` only in myAssistant, and sync with the script. Never run `git subtree` in kgirl, and never touch its root `HEAD`, `config`, `index` or venv shims.
+   - Edit `context-relay/` only in myAssistant, and sync with the script. Never run `git subtree` in kgirl, and never touch its root `HEAD`, `FETCH_HEAD`, `config`, `index` or venv shims. Those files make bare `HEAD` and `FETCH_HEAD` ambiguous, so use full refs (`refs/remotes/origin/main`) or `--`.
+   - **Other sessions push to the same branches.** On 2026-10-01 a parallel session duplicated a sync and a doc edit within minutes. Run `git ls-remote` immediately before each push, merge with `expectedHeadSha`, and pull in what's new instead of redoing it.
    - Run a tool on real data before writing its rules or tests.
    - Read the whole stderr once before retrying.
    - Label every claim L0 to L3, and say "not verified" out loud.
@@ -173,8 +176,8 @@ myAssistant/
     .claude-plugin/marketplace.json            marketplace "porter"
     plugins/porter-blast-radius/               lib/ engine discover atlas fsguard · server/ index tools · model/ · examples/ · test/
     skills/mcp-builder-hardened/               SKILL.md  reference/blast_radius_review.md  scripts/blast_radius_check.py(+test)  NOTICE.md
-kgirl/      claude/harness-safety-patches (#55) · claude/porter-blast-radius (context-relay/, docs/harness/PORTER.md, .claude/skills/mcp-builder-hardened → symlink)
-patern-coding/  claude/porter-agent-shell-consent (#2)
+kgirl/      main has #55 and #58: context-relay/, docs/harness/PORTER.md, .claude/skills/mcp-builder-hardened → symlink · #59 open
+patern-coding/  main has #2
 ```
 
 **Environment notes:**
