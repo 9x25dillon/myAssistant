@@ -84,7 +84,7 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
 | ID | Where | Finding | Level | Proposed fix |
 |---|---|---|---|---|
 | KFM-11 | kgirl `harness/skills.py` (`80f8b85`, on `main`) | The forge writes goal text, which a model supplies through `jev_swarm_task`, into `SKILL.md` with newlines intact, so it can add sections. It counts **staged** trajectories, and so does `Intuition.from_soup`. MCP `skills_forge` stores `active` skills with thresholds the caller picks | L1 | **Fix open in kgirl#59** (parallel session): `inline()`, active-only, staged skills, MCP floors. Modeled as C-FORGE-* (proposed) in `09c0eac` |
-| KFM-12 | kgirl `jev/swarm.py` `_learn` | A `jev_swarm_task` goal persists in an `active` trajectory outside the curator. It is recalled, replayed by intuition, and exportable by the forge. This loop stays open even with #59 | L1 (from `09c0eac`) | C-STAGE-TRAJECTORY: store MCP-started trajectories `staged` with `source="mcp"` |
+| KFM-12 | kgirl `jev/swarm.py` `_learn` | A `jev_swarm_task` goal persists in an `active` trajectory outside the curator. It is recalled, replayed by intuition, and exportable by the forge. This loop stays open even with #59 | L1 (from `09c0eac`) | C-STAGE-TRAJECTORY: store MCP-started trajectories `staged` with `source="mcp"`. **Closed** by kgirl#60 (merged `2e6638b`) |
 | KFM-05 / -07 | kgirl | Context packs go to the scout model unredacted. Bare-name import guesses aren't recorded as such | L1 / L0 | `C-REDACT`; a `resolution` column in `imports` |
 | NH-1 | nonsense-hotline `web.py` | No inbound SMS webhook: texting STOP to the hotline number does nothing | L1 (legal weight: ask counsel) | Twilio inbound handler that calls the existing opt-out path |
 | NH-2 | nonsense-hotline `dispatcher.py show_letters` | Letter text, user agent and IP are printed to the terminal unfiltered (escape-code injection) | L1 | Strip C0/C1 control characters before printing |
@@ -154,7 +154,7 @@ _Written for whoever picks this up next, human or agent. Evidence levels: **L0**
      - Update the pinned expectations in `test/kgirl-model.test.mjs` and re-run `risk_register` with `as_built`.
      - Then run `sh context-relay/tools/sync-subtree.sh` in kgirl. Its default, myAssistant `main`, now has everything.
    - **(b) kgirl#59.** Review it, then decide whether to merge. Once it merges, set its C-FORGE-* controls to `implemented` the same way.
-   - **(c) KFM-12.** C-STAGE-TRAJECTORY, as one small kgirl PR.
+   - **(c) KFM-12. Done.** kgirl#60 (merged `2e6638b`) implements C-STAGE-TRAJECTORY. The model marks it `implemented`, and as built no persistent loop is open (myAssistant#3).
    - **(d) Checkpoint A** for Context Relay: the name, plus D-006 to D-017 for approval. Phase 1 code starts only after that.
    - **(e) nonsense-hotline:** NH-1 (STOP handler) and NH-2 (strip control characters).
 3. **Working rules that would have saved time here:**
