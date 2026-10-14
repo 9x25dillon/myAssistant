@@ -1,7 +1,7 @@
-// Findings from inspecting the kgirl harness (main 93bfbfa: 26748c4, 80f8b85, #55 and #59), as executable
+// Findings from inspecting the kgirl harness (main 2e6638b: 26748c4, 80f8b85, #55, #59 and #60), as executable
 // claims over examples/kgirl-harness.model.json: as built (proposed controls absent), as designed, and
-// `before`: main before kgirl#55 (MCP hardening) and #59 (forge trust boundary), kept as a record of
-// what those fixes changed.
+// records of what the fixes changed: `before` is main before kgirl#55 (MCP hardening) and #59 (forge trust
+// boundary); `pre60` is main before #60 (MCP-started trajectories staged).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
@@ -16,13 +16,15 @@ const m = parseModel(readFileSync(join(PLUGIN, 'examples/kgirl-harness.model.jso
 const built = asBuilt(m);
 const PR55 = ['C-STAGE-MCP', 'C-VERIFY-ALLOWLIST', 'C-APPLY-CONFIRM', 'C-VERSION-NEGOTIATION'];
 const PR59 = ['C-FORGE-STAGED', 'C-FORGE-INLINE', 'C-FORGE-FLOOR'];
-const before = new Set([...built, ...PR55, ...PR59]);
+const PR60 = ['C-STAGE-TRAJECTORY'];
+const before = new Set([...built, ...PR55, ...PR59, ...PR60]);
+const pre60 = new Set([...built, ...PR60]);
 const openLoops = (disabled) => persistentCycles(m, { disabled }).filter((c) => !c.contained).map((c) => c.nodes.join(' -> '));
 const exposed = (disabled) => persistentExposure(m, { disabled }).map((x) => x.data).sort();
 
-test('the #55 and #59 controls are implemented; what is left is trajectory staging, framing and redaction', () => {
-  for (const c of [...PR55, ...PR59]) assert.equal(m.controls[c].status, 'implemented', c);
-  assert.deepEqual([...built].sort(), ['C-DATA-FRAMING', 'C-REDACT', 'C-STAGE-TRAJECTORY']);
+test('the #55, #59 and #60 controls are implemented; what is left is framing and redaction', () => {
+  for (const c of [...PR55, ...PR59, ...PR60]) assert.equal(m.controls[c].status, 'implemented', c);
+  assert.deepEqual([...built].sort(), ['C-DATA-FRAMING', 'C-REDACT']);
 });
 
 test('before #55 and #59, agent-written content came back through memory, trajectories and exported skills', () => {
@@ -40,16 +42,17 @@ test('as designed, every persistent loop is contained', () => {
   assert.deepEqual(runChecks(m), []);
 });
 
-test('as built, the one open loop is a swarm goal persisting as an active trajectory (KFM-12); staging closes it', () => {
-  assert.deepEqual(exposed(built), ['skills-dir', 'trajectories']);
-  assert.deepEqual(openLoops(built), ['kgirl-mcp -> jev-swarm -> trajectories -> skill-export -> skills-dir -> agent']);
-  const staged = new Set([...built].filter((c) => c !== 'C-STAGE-TRAJECTORY'));
-  assert.deepEqual(runChecks(m, { disabled: staged }), []);
+test('before #60 the one open loop was a swarm goal persisting as an active trajectory (KFM-12); as built it is closed', () => {
+  assert.deepEqual(exposed(pre60), ['skills-dir', 'trajectories']);
+  assert.deepEqual(openLoops(pre60), ['kgirl-mcp -> jev-swarm -> trajectories -> skill-export -> skills-dir -> agent']);
+  assert.deepEqual(exposed(built), []);
+  assert.deepEqual(openLoops(built), []);
+  assert.deepEqual(runChecks(m, { disabled: built }), []);
 });
 
 test('only the person-run CLI writes SKILL.md, so agent content reaches it damped, never unmitigated', () => {
-  for (const d of [before, built]) assert.ok(propagate(m, 'agent', 'integrity', { disabled: d }).damped.includes('skills-dir'));
-  assert.ok(propagate(m, 'agent', 'integrity').contained.includes('skills-dir'));
+  for (const d of [before, pre60]) assert.ok(propagate(m, 'agent', 'integrity', { disabled: d }).damped.includes('skills-dir'));
+  for (const d of [built, new Set()]) assert.ok(propagate(m, 'agent', 'integrity', { disabled: d }).contained.includes('skills-dir'));
   assert.deepEqual(m.edges.filter((e) => e[1] === 'skills-dir').map((e) => e[0]), ['skill-export']);
   assert.deepEqual(m.edges.filter((e) => e[0] === 'skill-forge' && e[2] === 'trust').map((e) => e[1]).sort(), ['kgirl-mcp', 'soup']);
 });
@@ -77,17 +80,17 @@ test('the porter bridge writes nothing into kgirl: its only outflow is sanitized
   assert.ok(r.damped.includes('agent'));
 });
 
-test('risk_register as built: soup bypass ranks first by inherent RPN; the open exposure is the trajectory loop', () => {
+test('risk_register as built: soup bypass ranks first by inherent RPN; no persistent exposure is left open', () => {
   const ctx = { roots: [PLUGIN], cache: new Map(), atlasDb: null };
   const r = JSON.parse(callTool(ctx, 'risk_register', { model: 'examples/kgirl-harness.model.json', as_built: true, top: 3 }).content[0].text);
   assert.equal(r.risks[0].id, 'KFM-01');
-  assert.deepEqual(r.persistentExposure.map((x) => x.data).sort(), ['skills-dir', 'trajectories']);
+  assert.deepEqual(r.persistentExposure.map((x) => x.data).sort(), []);
   const designed = JSON.parse(callTool(ctx, 'check_model', { model: 'examples/kgirl-harness.model.json' }).content[0].text);
   assert.equal(designed.ok, true);
   const today = JSON.parse(callTool(ctx, 'check_model', { model: 'examples/kgirl-harness.model.json', as_built: true }).content[0].text);
-  assert.equal(today.ok, false);
-  assert.ok(today.disabledControls.includes('C-STAGE-TRAJECTORY'));
-  assert.ok(!today.disabledControls.includes('C-STAGE-MCP'));
+  assert.equal(today.ok, true);
+  assert.deepEqual([...today.disabledControls].sort(), ['C-DATA-FRAMING', 'C-REDACT']);
+  assert.ok(!today.disabledControls.includes('C-STAGE-TRAJECTORY'));
 });
 
 // Tool-name contract: every MCP tool kgirl serves is mapped to the component it reaches.

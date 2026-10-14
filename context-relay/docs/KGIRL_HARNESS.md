@@ -82,7 +82,10 @@ The model maps every one of the server's 15 tools to the component it reaches (`
 - **As built, secrets in repos reach the scout model unmitigated.** Redaction only damps this, and a second barrier would need to be a different mechanism (see BLAST_RADIUS §5).
 - **The Porter bridge has one outflow**: sanitized output to the agent. It writes nothing into kgirl.
 - **Trajectories bypass the curator.** The swarm stores a winner's record with `soup.add`, which defaults to `active`; only the rules distilled from it go through `curator.propose`. The model used to put C-CURATOR on that edge, which overstated it. It now separates `distiller → soup` (C-CURATOR) from `jev-swarm → trajectories` (C-VERIFIED-WIN, partial). **(L1)**
-- **As built (main `93bfbfa`, with #55 and #59), one loop stays open**: `kgirl-mcp → jev-swarm → trajectories → skill-export → skills-dir → agent`. It is damped, not unmitigated, because only the person-run CLI writes `SKILL.md` (C-EXPORT-CLI). C-STAGE-TRAJECTORY closes it: store MCP-started trajectories `staged` with `source="mcp"`. #59 already makes forge and intuition read only `active` trajectories, so that one change is enough. It is [9x25dillon/kgirl#60](https://github.com/9x25dillon/kgirl/pull/60), and the control stays `proposed` until #60 merges.
+- **As built (main `2e6638b`, with #55, #59 and #60), no persistent loop is open and no data node is exposed.**
+  - **Before #60, one loop stayed open:** `kgirl-mcp → jev-swarm → trajectories → skill-export → skills-dir → agent`. It was damped, not unmitigated, because only the person-run CLI writes `SKILL.md` (C-EXPORT-CLI).
+  - **How #60 closed it:** [9x25dillon/kgirl#60](https://github.com/9x25dillon/kgirl/pull/60) implements C-STAGE-TRAJECTORY. MCP-started trajectories are stored `staged` with `source="mcp"`, and #59 already makes forge and intuition read only `active` trajectories.
+  - **Result:** `skills-dir` is now contained for agent-written content. Only C-DATA-FRAMING and C-REDACT remain `proposed`.
 - **`soup_remember` notes can't reach the forge.** They have no steps, so the model gives trajectory rows their own data node (`trajectories`) and routes only those into intuition, the forge and the export.
 
 ### Patches
