@@ -1,0 +1,332 @@
+{
+  "pyphysio_medical": {
+    "samples": 245760,
+    "sample_rate_check": {
+      "fs_1024": {
+        "seconds": 240.0,
+        "mean_hr_bpm": 34.815807536213846
+      },
+      "fs_2048": {
+        "seconds": 120.0,
+        "mean_hr_bpm": 69.63161507242769
+      }
+    },
+    "ecg_hrv": {
+      "beats": 139,
+      "seconds": 118.91150293422773,
+      "intervals_used": 138,
+      "intervals_excluded": 0,
+      "mean_rr_ms": 861.6775574944038,
+      "mean_hr_bpm": 69.63161507242769,
+      "sdnn_ms": 60.70270065431604,
+      "rmssd_ms": 32.82456847247016,
+      "pnn50": 0.0948905109489051,
+      "hf_ms2": 506.56842130647686,
+      "hf_peak_hz": 0.16101694915254236
+    },
+    "bvp_hrv": {
+      "beats": 141,
+      "seconds": 118.97055590199024,
+      "intervals_used": 135,
+      "intervals_excluded": 5,
+      "mean_rr_ms": 859.24932765814,
+      "mean_hr_bpm": 69.82839330643216,
+      "sdnn_ms": 62.25773796546849,
+      "rmssd_ms": 36.34529684137687,
+      "pnn50": 0.15384615384615385,
+      "hf_ms2": 445.6551266256427,
+      "hf_peak_hz": 0.22033898305084745
+    },
+    "ecg_vs_bvp": {
+      "r_waves": 139,
+      "pulses": 141,
+      "r_followed_by_a_pulse": 135,
+      "transit_ms": {
+        "median": 307.17109274344523,
+        "sd": 9.622734250029952,
+        "iqr": [
+          301.66137102096616,
+          312.65215070598276
+        ]
+      },
+      "r_without_pulse_s": [
+        64.47,
+        68.24,
+        69.2,
+        119.76
+      ],
+      "pulses_without_r_s": [
+        0.23,
+        64.2,
+        65.1,
+        68.22,
+        69.02,
+        70.07
+      ]
+    },
+    "breathing": {
+      "dominant_hz": 0.16191093396129075,
+      "mean_phase_rate_hz": 0.20520218204283566,
+      "band_hz": [
+        0.1,
+        0.5
+      ],
+      "band_power_fraction": 0.4995249540047125
+    },
+    "rsa_check": {
+      "hf_peak_hz": 0.16101694915254236,
+      "breathing_dominant_hz": 0.16191093396129075,
+      "difference_hz": 0.0008939848087483881
+    },
+    "rate_coupling": {
+      "band_hz": [
+        0.1,
+        0.5
+      ],
+      "segment_s": 30.0,
+      "segments": 6,
+      "span_s": [
+        1.7480956175164009,
+        119.76148796582082
+      ],
+      "peak_hz": 0.43333333333333335,
+      "peak_msc": 0.9524026594057595,
+      "surrogate_q95": 0.7339541757285373,
+      "p": 0.005,
+      "signal_peak_hz": 0.13333333333333333,
+      "msc_at_signal_peak": 0.1821710512514666,
+      "surrogate_q95_at_signal_peak": 0.46867396770827885,
+      "p_at_signal_peak": 0.25,
+      "surrogates": 199
+    },
+    "synchronization": {
+      "overlap_s": [
+        10.0,
+        109.99951171875
+      ],
+      "rate_hz": 10.0,
+      "x_rate_hz": 0.20519589699185162,
+      "y_rate_hz": 1.1609296295225868,
+      "whole_record": {
+        "ratio": "5:1",
+        "relative_detuning": 0.11624317368730161,
+        "index": 0.13104718694803308,
+        "nearest_ratio": "11:2",
+        "ratios_scanned": 6,
+        "surrogate_mean": 0.13414648683430222,
+        "surrogate_q95": 0.18506423869851824,
+        "p": 0.59,
+        "net_slips": -13.481519441876475,
+        "slips_per_min": -8.097008673799714,
+        "verdict": "no evidence of interaction"
+      },
+      "windows": {
+        "seconds": 30.0,
+        "step_s": 5.0,
+        "count": 15,
+        "ratios": {
+          "5:1": 1,
+          "9:2": 1,
+          "11:2": 3,
+          "6:1": 9,
+          "7:1": 1
+        },
+        "index_threshold": 0.25152069360694246,
+        "locked_fraction": 0.0,
+        "slip_free_fraction": 0.26666666666666666,
+        "locked_fraction_expected": 0.05025125628140704,
+        "p": 1.0,
+        "longest_locked_s": 0.0,
+        "mean_index": 0.11903276215447334
+      },
+      "surrogates": 199,
+      "min_shift_s": 30.0,
+      "alpha": 0.05
+    }
+  },
+  "systole_task1": {
+    "seconds": 1536.57,
+    "respiration_clipped_samples": 1152,
+    "ecg_hrv": {
+      "beats": 1938,
+      "seconds": 1536.5560857382254,
+      "intervals_used": 1936,
+      "intervals_excluded": 1,
+      "mean_rr_ms": 793.1380689789248,
+      "mean_hr_bpm": 75.64887167406198,
+      "sdnn_ms": 52.12103244203697,
+      "rmssd_ms": 27.174092214886812,
+      "pnn50": 0.04705274043433299,
+      "hf_ms2": 179.79920704512028,
+      "hf_peak_hz": 0.35833333333333334,
+      "lf_ms2": 429.2680618783531,
+      "lf_peak_hz": 0.041666666666666664,
+      "lf_hf": 2.387485845644631
+    },
+    "breathing": {
+      "mean_phase_rate_hz": 0.31144793406976407,
+      "band_hz": [
+        0.15,
+        0.5
+      ],
+      "band_power_fraction": 0.3413263643312539
+    },
+    "rate_coupling": {
+      "band_hz": [
+        0.15,
+        0.5
+      ],
+      "segment_s": 60.0,
+      "segments": 50,
+      "span_s": [
+        0.7141252338161215,
+        1536.568
+      ],
+      "peak_hz": 0.35,
+      "peak_msc": 0.36760555021192687,
+      "surrogate_q95": 0.14264159995083683,
+      "p": 0.005,
+      "signal_peak_hz": 0.23333333333333334,
+      "msc_at_signal_peak": 0.05134671003536865,
+      "surrogate_q95_at_signal_peak": 0.06924161562922922,
+      "p_at_signal_peak": 0.095,
+      "surrogates": 199
+    },
+    "rsa_blocks": [
+      {
+        "t_s": [
+          0.0,
+          300.0
+        ],
+        "mean_hr_bpm": 77.99485169204877,
+        "hf_peak_hz": 0.2,
+        "respiration_clipped_samples": 648,
+        "breathing_peak_hz": 0.21666666666666667,
+        "coherence_at_breathing": 0.2019400689290547,
+        "p": 0.31,
+        "in_band_max": [
+          0.21666666666666667,
+          0.2019400689290547,
+          1.0
+        ]
+      },
+      {
+        "t_s": [
+          300.0,
+          600.0
+        ],
+        "mean_hr_bpm": 77.07169848728893,
+        "hf_peak_hz": 0.15,
+        "respiration_clipped_samples": 0,
+        "breathing_peak_hz": 0.36666666666666664,
+        "coherence_at_breathing": 0.8812882370718081,
+        "p": 0.005,
+        "in_band_max": [
+          0.36666666666666664,
+          0.8812882370718081,
+          0.005
+        ]
+      },
+      {
+        "t_s": [
+          600.0,
+          900.0
+        ],
+        "mean_hr_bpm": 75.90766909608705,
+        "hf_peak_hz": 0.35833333333333334,
+        "respiration_clipped_samples": 160,
+        "breathing_peak_hz": 0.25,
+        "coherence_at_breathing": 0.14630214397674854,
+        "p": 0.355,
+        "in_band_max": [
+          0.26666666666666666,
+          0.383846458455443,
+          0.45
+        ]
+      },
+      {
+        "t_s": [
+          900.0,
+          1200.0
+        ],
+        "mean_hr_bpm": 74.19073746638797,
+        "hf_peak_hz": 0.35,
+        "respiration_clipped_samples": 0,
+        "breathing_peak_hz": 0.35,
+        "coherence_at_breathing": 0.9171949966421189,
+        "p": 0.005,
+        "in_band_max": [
+          0.35,
+          0.9171949966421189,
+          0.005
+        ]
+      },
+      {
+        "t_s": [
+          1200.0,
+          1500.0
+        ],
+        "mean_hr_bpm": 72.89316059495931,
+        "hf_peak_hz": 0.18333333333333332,
+        "respiration_clipped_samples": 0,
+        "breathing_peak_hz": 0.35,
+        "coherence_at_breathing": 0.7385704153959535,
+        "p": 0.005,
+        "in_band_max": [
+          0.36666666666666664,
+          0.821501004357349,
+          0.005
+        ]
+      }
+    ],
+    "synchronization": {
+      "overlap_s": [
+        6.666666666666667,
+        1529.9023333333332
+      ],
+      "rate_hz": 10.0,
+      "x_rate_hz": 0.31145131025910805,
+      "y_rate_hz": 1.2602159827869526,
+      "whole_record": {
+        "ratio": "7:2",
+        "relative_detuning": 0.13500574441519128,
+        "index": 0.02371141756799884,
+        "nearest_ratio": "4:1",
+        "ratios_scanned": 8,
+        "surrogate_mean": 0.03177795368782659,
+        "surrogate_q95": 0.04531292492296813,
+        "p": 0.86,
+        "net_slips": -518.3035194554569,
+        "slips_per_min": -20.41636762560893,
+        "verdict": "no evidence of interaction"
+      },
+      "windows": {
+        "seconds": 30.0,
+        "step_s": 5.0,
+        "count": 299,
+        "ratios": {
+          "9:2": 41,
+          "4:1": 72,
+          "11:3": 46,
+          "11:2": 13,
+          "5:1": 22,
+          "6:1": 18,
+          "7:2": 50,
+          "3:1": 3,
+          "10:3": 31,
+          "7:1": 3
+        },
+        "index_threshold": 0.31994592516976006,
+        "locked_fraction": 0.043478260869565216,
+        "slip_free_fraction": 0.18729096989966554,
+        "locked_fraction_expected": 0.04999915967798862,
+        "p": 0.645,
+        "longest_locked_s": 50.0,
+        "mean_index": 0.1543163538954763
+      },
+      "surrogates": 199,
+      "min_shift_s": 30.0,
+      "alpha": 0.05
+    }
+  }
+}

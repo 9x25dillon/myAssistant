@@ -1,0 +1,79 @@
+{
+  "name": "NeuroSymbiotic Coherence Seed",
+  "evaluations": 265,
+  "valid": 265,
+  "coverage": 0.3055555555555556,
+  "qd_score": 1.9492807023306622,
+  "baseline": {
+    "genome": {
+      "theta": 1.4700162133138819,
+      "radius": 0.9959269750739759,
+      "zoom": 1.018591666183176,
+      "density": 0.08,
+      "mode": "mixolydian",
+      "root": 41
+    },
+    "valid": true,
+    "fitness": 0.06692233320047664,
+    "cell": [
+      3,
+      5
+    ],
+    "edge_dimension": 1.264658005349661,
+    "pitch_class_entropy_bits": 2.7824412284963227
+  },
+  "gain_over_baseline": 0.2634878581037262,
+  "held_out": {
+    "estimator": "recurrence median over dims 2-4 at 32 and 64 points (the search used 48)",
+    "baseline": 0.0874177066398934,
+    "champion": 0.22348926298250632,
+    "gain": 0.13607155634261292
+  },
+  "champion": {
+    "cell": [
+      2,
+      5
+    ],
+    "fitness": 0.33041019130420285,
+    "edge_dimension": 1.1922997694926047,
+    "pitch_class_entropy_bits": 2.80117228769598,
+    "genome": {
+      "theta": 0.3107444030020024,
+      "radius": 0.9857820631828521,
+      "zoom": 1.6,
+      "density": 0.16,
+      "mode": "lydian",
+      "root": 42
+    }
+  },
+  "objective": "recurrence",
+  "rendered": [
+    {
+      "dir": "out/nscts/evolve/champion",
+      "fitness": 0.33041019130420285,
+      "cell": [
+        2,
+        5
+      ],
+      "pcm_sha256": "a287e187aacc05af"
+    },
+    {
+      "dir": "out/nscts/evolve/elite_01",
+      "fitness": 0.24177707482871152,
+      "cell": [
+        2,
+        4
+      ],
+      "pcm_sha256": "73c2a230f07be03a"
+    },
+    {
+      "dir": "out/nscts/evolve/elite_02",
+      "fitness": 0.22735700557201205,
+      "cell": [
+        3,
+        3
+      ],
+      "pcm_sha256": "1893bd11da86a912"
+    }
+  ]
+}

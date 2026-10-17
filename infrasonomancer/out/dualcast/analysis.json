@@ -1,0 +1,43 @@
+{
+  "source": {
+    "carrier": 8500000000000.0,
+    "deviation": 432000.0,
+    "samples": 10000,
+    "duration": 1.0,
+    "data_rate": 20000000000.0,
+    "rc_tau": 5e-10
+  },
+  "sample_rate_hz": 9999.0,
+  "nyquist_hz": 4999.5,
+  "carrier_alias_hz": 4991.0,
+  "band_edge_aliases_hz": [
+    2965.0,
+    2948.0
+  ],
+  "nyquist_folds_per_chirp": 172.81728172817282,
+  "envelope_identity_max_error": 3.14778259014048e-10,
+  "float_vs_exact_max_sample_error": 0.011372146905908653,
+  "destructive_nulls_in_record": 432000,
+  "resolved_window_s": [
+    0.49421354166666664,
+    0.5057864583333334
+  ],
+  "resolved_samples": 115,
+  "spectral_flatness": 0.3081591135898472,
+  "dominant_hz": 3497.546112023256,
+  "rc_filter": {
+    "nonzero_kernel_samples": 1,
+    "acts_as": "a unit impulse",
+    "same_mode_shift_samples": 4999,
+    "gain": 20.0,
+    "transmitted_equals_shifted_combined": true,
+    "samples_lost": 4999
+  },
+  "files": {
+    "source_stereo.wav": "L = \u03bb1, R = \u03bb2 (unprocessed), \u00d7 0.89",
+    "combined.wav": "(\u03bb1 + \u03bb2)/2 \u00d7 0.89",
+    "transmitted.wav": "the source's transmitted schema \u00f7 20 \u00d7 0.89",
+    "sample_rate_hz": 9999,
+    "phases": "float64, as the source computes them"
+  }
+}

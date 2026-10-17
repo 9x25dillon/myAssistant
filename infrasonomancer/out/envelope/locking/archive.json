@@ -1,0 +1,1958 @@
+{
+  "name": "envelope",
+  "config": {
+    "target": "locking",
+    "axes": [
+      "detuning",
+      "sensor_noise"
+    ],
+    "bins": [
+      6,
+      6
+    ],
+    "iterations": 200,
+    "initial": 24,
+    "surrogates": 39,
+    "alpha": 0.05,
+    "replays": 3
+  },
+  "evaluations": 225,
+  "coverage": 1.0,
+  "baseline": {
+    "scenario": {
+      "n": 4,
+      "m": 1,
+      "breath_hz": 0.25,
+      "detuning": 0.0,
+      "coupling": 0.3,
+      "phase_noise": 0.05,
+      "breath_noise": 0.02,
+      "sensor_noise": 0.05,
+      "seconds": 300.0,
+      "fs": 250.0
+    },
+    "fitness": 0.0,
+    "call": "right",
+    "true_slips": 0.3371125165665872,
+    "oracle_verdict": "locked",
+    "pipeline_verdict": "locked"
+  },
+  "worst_case_map": {
+    "rows": "detuning",
+    "columns": "sensor_noise",
+    "edges": {
+      "detuning": [
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0
+      ],
+      "sensor_noise": [
+        0.0,
+        0.09999999999999999,
+        0.19999999999999998,
+        0.3,
+        0.39999999999999997,
+        0.49999999999999994,
+        0.6
+      ]
+    },
+    "fitness": [
+      [
+        0.7138319936632973,
+        0.8622033658430923,
+        0.0,
+        0.9550975594503401,
+        0.9586775618884427,
+        0.9840895473099549
+      ],
+      [
+        0.0,
+        0.5972409002253845,
+        0.6012624873075955,
+        0.0,
+        0.8141749462063778,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.7565745918547288
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "failures": [
+    {
+      "cell": [
+        3,
+        2
+      ],
+      "fitness": 1.0,
+      "call": "false lock",
+      "true_slips": -67.79248527215667,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.7404614640126861,
+      "pipeline_verdict": "locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -0.7169258259863227,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.3726218192166933,
+        "detuning": -1.7488717618360723,
+        "coupling": 0.5571758932157331,
+        "phase_noise": 0.082021682028557,
+        "breath_noise": 0.028440864562693742,
+        "sensor_noise": 0.2819965644078212,
+        "seconds": 178.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        0,
+        5
+      ],
+      "fitness": 0.9840895473099549,
+      "call": "missed lock",
+      "true_slips": 0.031820905380090345,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.03636708351237977,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 12.897354109686205,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 7,
+        "m": 2,
+        "breath_hz": 0.2012355628175715,
+        "detuning": 0.26442053292354306,
+        "coupling": 0.9925918956404662,
+        "phase_noise": 0.4051485627071588,
+        "breath_noise": 0.05023247985493665,
+        "sensor_noise": 0.6,
+        "seconds": 90.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.9247008928793138,
+        0.9785559250927007,
+        0.920023360759203
+      ],
+      "reproduces": 3
+    },
+    {
+      "cell": [
+        0,
+        4
+      ],
+      "fitness": 0.9586775618884427,
+      "call": "missed lock",
+      "true_slips": 0.08264487622311475,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.08521093012854208,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -11.909218325927807,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.175887328608348,
+        "detuning": -0.20921151939964122,
+        "coupling": 0.14342721653944088,
+        "phase_noise": 0.0,
+        "breath_noise": 0.05338349784761853,
+        "sensor_noise": 0.46586045002441506,
+        "seconds": 146.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.7140274175508099,
+        0.9536474499871754,
+        0.9136330353009773
+      ],
+      "reproduces": 3
+    },
+    {
+      "cell": [
+        0,
+        3
+      ],
+      "fitness": 0.9550975594503401,
+      "call": "missed lock",
+      "true_slips": -0.0898048810993196,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.06477765645952208,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -2.718016508458726,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.3469680059559564,
+        "detuning": 0.2822909474768477,
+        "coupling": 0.4437751413787337,
+        "phase_noise": 0.11574095379139034,
+        "breath_noise": 0.02417904480030783,
+        "sensor_noise": 0.3738672534358822,
+        "seconds": 187.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.9949121571740384,
+        0.0,
+        0.0
+      ],
+      "reproduces": 1
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "fitness": 0.8622033658430923,
+      "call": "missed lock",
+      "true_slips": -0.27559326831381536,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.27558480718577955,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.55,
+      "pipeline_slips": -1.49905923733425,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.13940677057360804,
+        "detuning": -0.3787225207657999,
+        "coupling": 0.09056645564835358,
+        "phase_noise": 0.5644022018533301,
+        "breath_noise": 0.009949187366294954,
+        "sensor_noise": 0.14542876050535322,
+        "seconds": 205.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.8801339293335644,
+        0.0
+      ],
+      "reproduces": 1
+    },
+    {
+      "cell": [
+        1,
+        4
+      ],
+      "fitness": 0.8141749462063778,
+      "call": "missed lock",
+      "true_slips": 0.3716501075872444,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.425,
+      "oracle_slips": 0.3856338002252001,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.175,
+      "pipeline_slips": -1.939902214653596,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3298648687963842,
+        "detuning": 0.8951027326899617,
+        "coupling": 0.06346802117935851,
+        "phase_noise": 0.5566871573685077,
+        "breath_noise": 0.07515850675965183,
+        "sensor_noise": 0.4158586344247797,
+        "seconds": 117.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        2,
+        5
+      ],
+      "fitness": 0.7565745918547288,
+      "call": "missed lock",
+      "true_slips": 0.48685081629054244,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.49521767395956695,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.15,
+      "pipeline_slips": 1.114899063535185,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3387662853109937,
+        "detuning": 1.438548164252414,
+        "coupling": 0.05,
+        "phase_noise": 0.5645970822770081,
+        "breath_noise": 0.04357220629259553,
+        "sensor_noise": 0.5259694514441201,
+        "seconds": 121.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "fitness": 0.7138319936632973,
+      "call": "missed lock",
+      "true_slips": 0.5723360126734054,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.45,
+      "oracle_slips": 0.5892441075255399,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.625,
+      "pipeline_slips": 0.4785724867771469,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.16813940550144446,
+        "detuning": 0.49821309839315553,
+        "coupling": 0.05,
+        "phase_noise": 0.4458214996227865,
+        "breath_noise": 0.03432452476735334,
+        "sensor_noise": 0.08857773901643302,
+        "seconds": 256.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        1,
+        2
+      ],
+      "fitness": 0.6012624873075955,
+      "call": "missed lock",
+      "true_slips": 0.7974750253848091,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 1.0,
+      "oracle_slips": -24.864197408204497,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 1.0,
+      "pipeline_slips": -23.900743233538556,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.21038226036817384,
+        "detuning": 0.8073106730677813,
+        "coupling": 0.0877095952739173,
+        "phase_noise": 0.5142238236171565,
+        "breath_noise": 0.044164656169626414,
+        "sensor_noise": 0.2236786462426933,
+        "seconds": 242.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "fitness": 0.5972409002253845,
+      "call": "missed lock",
+      "true_slips": 0.8055181995492312,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.525,
+      "oracle_slips": 0.8128130545266407,
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.9,
+      "pipeline_slips": 0.6380169287175689,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.20022504836549976,
+        "detuning": -0.5242673739059018,
+        "coupling": 0.05,
+        "phase_noise": 0.5578765410180251,
+        "breath_noise": 0.04381851098135679,
+        "sensor_noise": 0.15738653869712754,
+        "seconds": 262.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.8717244701331571
+      ],
+      "reproduces": 1
+    }
+  ],
+  "reproducible_failures": 2,
+  "safe_cells": 26,
+  "history": {
+    "columns": [
+      "evaluations",
+      "coverage",
+      "qd_score",
+      "worst"
+    ],
+    "rows": [
+      [
+        25,
+        0.5833333333333334,
+        1.8918824455457162,
+        0.9836425260276649
+      ],
+      [
+        35,
+        0.6111111111111112,
+        1.938740085478005,
+        0.9836425260276649
+      ],
+      [
+        45,
+        0.6666666666666666,
+        1.938740085478005,
+        0.9836425260276649
+      ],
+      [
+        55,
+        0.7777777777777778,
+        2.9387400854780052,
+        1.0
+      ],
+      [
+        65,
+        0.8611111111111112,
+        3.6231742444862833,
+        1.0
+      ],
+      [
+        75,
+        0.8611111111111112,
+        4.379748836341013,
+        1.0
+      ],
+      [
+        85,
+        0.8611111111111112,
+        4.379748836341013,
+        1.0
+      ],
+      [
+        95,
+        0.8888888888888888,
+        4.379748836341013,
+        1.0
+      ],
+      [
+        105,
+        0.8888888888888888,
+        5.271350036839124,
+        1.0
+      ],
+      [
+        115,
+        0.9166666666666666,
+        5.271350036839124,
+        1.0
+      ],
+      [
+        125,
+        0.9166666666666666,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        135,
+        0.9722222222222222,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        145,
+        0.9722222222222222,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        155,
+        0.9722222222222222,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        165,
+        0.9722222222222222,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        175,
+        0.9722222222222222,
+        6.831290086035161,
+        1.0
+      ],
+      [
+        185,
+        0.9722222222222222,
+        7.428530986260546,
+        1.0
+      ],
+      [
+        195,
+        0.9722222222222222,
+        8.242705932466924,
+        1.0
+      ],
+      [
+        205,
+        0.9722222222222222,
+        8.242705932466924,
+        1.0
+      ],
+      [
+        215,
+        1.0,
+        8.243152953749213,
+        1.0
+      ],
+      [
+        225,
+        1.0,
+        8.243152953749213,
+        1.0
+      ]
+    ]
+  },
+  "elites": [
+    {
+      "cell": [
+        3,
+        2
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.3726218192166933,
+        "detuning": -1.7488717618360723,
+        "coupling": 0.5571758932157331,
+        "phase_noise": 0.082021682028557,
+        "breath_noise": 0.028440864562693742,
+        "sensor_noise": 0.2819965644078212,
+        "seconds": 178.0,
+        "fs": 250.0
+      },
+      "fitness": 1.0,
+      "born": 29,
+      "parent": [
+        1,
+        2
+      ],
+      "call": "false lock",
+      "true_slips": -67.79248527215667,
+      "true_index": 0.3102094599519613,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.7404614640126861,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -0.7169258259863227,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 0.8843248038274965,
+      "pipeline_error": null,
+      "detuning": 1.7488717618360723,
+      "sensor_noise": 0.2819965644078212
+    },
+    {
+      "cell": [
+        0,
+        5
+      ],
+      "genome": {
+        "n": 7,
+        "m": 2,
+        "breath_hz": 0.2012355628175715,
+        "detuning": 0.26442053292354306,
+        "coupling": 0.9925918956404662,
+        "phase_noise": 0.4051485627071588,
+        "breath_noise": 0.05023247985493665,
+        "sensor_noise": 0.6,
+        "seconds": 90.0,
+        "fs": 250.0
+      },
+      "fitness": 0.9840895473099549,
+      "born": 186,
+      "parent": [
+        0,
+        5
+      ],
+      "call": "missed lock",
+      "true_slips": 0.031820905380090345,
+      "true_index": 0.8824962167305709,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.03636708351237977,
+      "oracle_ratio": "7:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 12.897354109686205,
+      "pipeline_ratio": "7:1",
+      "beat_error_ms": 2.4519848573687497,
+      "pipeline_error": null,
+      "detuning": 0.26442053292354306,
+      "sensor_noise": 0.6
+    },
+    {
+      "cell": [
+        0,
+        4
+      ],
+      "genome": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.175887328608348,
+        "detuning": -0.20921151939964122,
+        "coupling": 0.14342721653944088,
+        "phase_noise": 0.0,
+        "breath_noise": 0.05338349784761853,
+        "sensor_noise": 0.46586045002441506,
+        "seconds": 146.0,
+        "fs": 250.0
+      },
+      "fitness": 0.9586775618884427,
+      "born": 96,
+      "parent": [
+        2,
+        4
+      ],
+      "call": "missed lock",
+      "true_slips": 0.08264487622311475,
+      "true_index": 0.9692876987931267,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.08521093012854208,
+      "oracle_ratio": "3:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -11.909218325927807,
+      "pipeline_ratio": "3:1",
+      "beat_error_ms": 1.560923377972756,
+      "pipeline_error": null,
+      "detuning": 0.20921151939964122,
+      "sensor_noise": 0.46586045002441506
+    },
+    {
+      "cell": [
+        0,
+        3
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.3469680059559564,
+        "detuning": 0.2822909474768477,
+        "coupling": 0.4437751413787337,
+        "phase_noise": 0.11574095379139034,
+        "breath_noise": 0.02417904480030783,
+        "sensor_noise": 0.3738672534358822,
+        "seconds": 187.0,
+        "fs": 250.0
+      },
+      "fitness": 0.9550975594503401,
+      "born": 9,
+      "parent": [
+        0,
+        3
+      ],
+      "call": "missed lock",
+      "true_slips": -0.0898048810993196,
+      "true_index": 0.956228817836835,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.06477765645952208,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -2.718016508458726,
+      "pipeline_ratio": "11:3",
+      "beat_error_ms": 1.0824706250360805,
+      "pipeline_error": null,
+      "detuning": 0.2822909474768477,
+      "sensor_noise": 0.3738672534358822
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.13940677057360804,
+        "detuning": -0.3787225207657999,
+        "coupling": 0.09056645564835358,
+        "phase_noise": 0.5644022018533301,
+        "breath_noise": 0.009949187366294954,
+        "sensor_noise": 0.14542876050535322,
+        "seconds": 205.0,
+        "fs": 250.0
+      },
+      "fitness": 0.8622033658430923,
+      "born": 80,
+      "parent": [
+        0,
+        1
+      ],
+      "call": "missed lock",
+      "true_slips": -0.27559326831381536,
+      "true_index": 0.25758575925632743,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.27558480718577955,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.55,
+      "pipeline_slips": -1.49905923733425,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.4596381392616422,
+      "pipeline_error": null,
+      "detuning": 0.3787225207657999,
+      "sensor_noise": 0.14542876050535322
+    },
+    {
+      "cell": [
+        1,
+        4
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3298648687963842,
+        "detuning": 0.8951027326899617,
+        "coupling": 0.06346802117935851,
+        "phase_noise": 0.5566871573685077,
+        "breath_noise": 0.07515850675965183,
+        "sensor_noise": 0.4158586344247797,
+        "seconds": 117.0,
+        "fs": 250.0
+      },
+      "fitness": 0.8141749462063778,
+      "born": 168,
+      "parent": [
+        2,
+        5
+      ],
+      "call": "missed lock",
+      "true_slips": 0.3716501075872444,
+      "true_index": 0.20561727874417443,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.425,
+      "oracle_slips": 0.3856338002252001,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.175,
+      "pipeline_slips": -1.939902214653596,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 1.2428968581374988,
+      "pipeline_error": null,
+      "detuning": 0.8951027326899617,
+      "sensor_noise": 0.4158586344247797
+    },
+    {
+      "cell": [
+        2,
+        5
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3387662853109937,
+        "detuning": 1.438548164252414,
+        "coupling": 0.05,
+        "phase_noise": 0.5645970822770081,
+        "breath_noise": 0.04357220629259553,
+        "sensor_noise": 0.5259694514441201,
+        "seconds": 121.0,
+        "fs": 250.0
+      },
+      "fitness": 0.7565745918547288,
+      "born": 41,
+      "parent": [
+        3,
+        5
+      ],
+      "call": "missed lock",
+      "true_slips": 0.48685081629054244,
+      "true_index": 0.2143215634482708,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 0.49521767395956695,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.15,
+      "pipeline_slips": 1.114899063535185,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 1.676131812516246,
+      "pipeline_error": null,
+      "detuning": 1.438548164252414,
+      "sensor_noise": 0.5259694514441201
+    },
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.16813940550144446,
+        "detuning": 0.49821309839315553,
+        "coupling": 0.05,
+        "phase_noise": 0.4458214996227865,
+        "breath_noise": 0.03432452476735334,
+        "sensor_noise": 0.08857773901643302,
+        "seconds": 256.0,
+        "fs": 250.0
+      },
+      "fitness": 0.7138319936632973,
+      "born": 79,
+      "parent": [
+        0,
+        2
+      ],
+      "call": "missed lock",
+      "true_slips": 0.5723360126734054,
+      "true_index": 0.1263526961491154,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.45,
+      "oracle_slips": 0.5892441075255399,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.625,
+      "pipeline_slips": 0.4785724867771469,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.25659730066607267,
+      "pipeline_error": null,
+      "detuning": 0.49821309839315553,
+      "sensor_noise": 0.08857773901643302
+    },
+    {
+      "cell": [
+        1,
+        2
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.21038226036817384,
+        "detuning": 0.8073106730677813,
+        "coupling": 0.0877095952739173,
+        "phase_noise": 0.5142238236171565,
+        "breath_noise": 0.044164656169626414,
+        "sensor_noise": 0.2236786462426933,
+        "seconds": 242.0,
+        "fs": 250.0
+      },
+      "fitness": 0.6012624873075955,
+      "born": 92,
+      "parent": [
+        0,
+        2
+      ],
+      "call": "missed lock",
+      "true_slips": 0.7974750253848091,
+      "true_index": 0.029767484560745027,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 1.0,
+      "oracle_slips": -24.864197408204497,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 1.0,
+      "pipeline_slips": -23.900743233538556,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 0.7190188705834544,
+      "pipeline_error": null,
+      "detuning": 0.8073106730677813,
+      "sensor_noise": 0.2236786462426933
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "genome": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.20022504836549976,
+        "detuning": -0.5242673739059018,
+        "coupling": 0.05,
+        "phase_noise": 0.5578765410180251,
+        "breath_noise": 0.04381851098135679,
+        "sensor_noise": 0.15738653869712754,
+        "seconds": 262.0,
+        "fs": 250.0
+      },
+      "fitness": 0.5972409002253845,
+      "born": 157,
+      "parent": [
+        0,
+        2
+      ],
+      "call": "missed lock",
+      "true_slips": 0.8055181995492312,
+      "true_index": 0.17453649384529138,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.525,
+      "oracle_slips": 0.8128130545266407,
+      "oracle_ratio": "3:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.9,
+      "pipeline_slips": 0.6380169287175689,
+      "pipeline_ratio": "3:1",
+      "beat_error_ms": 0.4716698370970107,
+      "pipeline_error": null,
+      "detuning": 0.5242673739059018,
+      "sensor_noise": 0.15738653869712754
+    },
+    {
+      "cell": [
+        4,
+        2
+      ],
+      "genome": {
+        "n": 4,
+        "m": 1,
+        "breath_hz": 0.3066815954154807,
+        "detuning": 2.324336021554225,
+        "coupling": 0.5136960256502751,
+        "phase_noise": 0.3609059524673214,
+        "breath_noise": 0.0024809917624225132,
+        "sensor_noise": 0.28723442417534445,
+        "seconds": 199.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 34.00959606410484,
+      "true_index": 0.2443175398489334,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.625,
+      "oracle_slips": 33.99960951459903,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 32.70430111300727,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 0.8731033340723116,
+      "pipeline_error": null,
+      "detuning": 2.324336021554225,
+      "sensor_noise": 0.28723442417534445
+    },
+    {
+      "cell": [
+        2,
+        4
+      ],
+      "genome": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.18244701241218195,
+        "detuning": -1.077945543167779,
+        "coupling": 0.18814970127659603,
+        "phase_noise": 0.019984248178413645,
+        "breath_noise": 0.04197070550602037,
+        "sensor_noise": 0.4361955546030162,
+        "seconds": 173.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -1.7897201161604444,
+      "true_index": 0.7643161526984266,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -1.782220871745285,
+      "oracle_ratio": "3:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -9.971753588973211,
+      "pipeline_ratio": "3:1",
+      "beat_error_ms": 1.1747043881431551,
+      "pipeline_error": null,
+      "detuning": 1.077945543167779,
+      "sensor_noise": 0.4361955546030162
+    },
+    {
+      "cell": [
+        5,
+        5
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.18940514874546205,
+        "detuning": -2.882615027438473,
+        "coupling": 0.09378276637492605,
+        "phase_noise": 0.23389513756388833,
+        "breath_noise": 0.06602268444509095,
+        "sensor_noise": 0.5963715263893289,
+        "seconds": 119.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -3.3016411780674377,
+      "true_index": 0.14495704480648394,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.825,
+      "oracle_slips": -3.308425835687189,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 1.0,
+      "pipeline_slips": -17.453956211881994,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 1.6171290804294358,
+      "pipeline_error": null,
+      "detuning": 2.882615027438473,
+      "sensor_noise": 0.5963715263893289
+    },
+    {
+      "cell": [
+        4,
+        1
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.18314509605290719,
+        "detuning": -2.4768641229515156,
+        "coupling": 0.7919216423505486,
+        "phase_noise": 0.21666947070227296,
+        "breath_noise": 0.05243287059258868,
+        "sensor_noise": 0.11648058130579758,
+        "seconds": 160.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -44.58599976190698,
+      "true_index": 0.20689983919736624,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -44.570207805921065,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -39.981372889118646,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 0.34255945078598415,
+      "pipeline_error": null,
+      "detuning": 2.4768641229515156,
+      "sensor_noise": 0.11648058130579758
+    },
+    {
+      "cell": [
+        0,
+        2
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.21895512269101364,
+        "detuning": 0.0021741733521407625,
+        "coupling": 0.05342391850606305,
+        "phase_noise": 0.5560175797745984,
+        "breath_noise": 0.04810689952767488,
+        "sensor_noise": 0.20690500779596296,
+        "seconds": 255.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 3.0327546081500847,
+      "true_index": 0.22001314139118955,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 3.0311540152441245,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.05,
+      "pipeline_slips": 2.2100105509353782,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.6051105817093116,
+      "pipeline_error": null,
+      "detuning": 0.0021741733521407625,
+      "sensor_noise": 0.20690500779596296
+    },
+    {
+      "cell": [
+        2,
+        0
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.14550503376793772,
+        "detuning": -1.399805493757967,
+        "coupling": 0.18720085979200754,
+        "phase_noise": 0.3102315453055796,
+        "breath_noise": 0.011235214878480788,
+        "sensor_noise": 0.013520174310195055,
+        "seconds": 204.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -22.979607406154305,
+      "true_index": 0.27992938411758794,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.925,
+      "oracle_slips": -22.972711935515136,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.15,
+      "pipeline_slips": 1.7665629109660785,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 0.04476922073060052,
+      "pipeline_error": null,
+      "detuning": 1.399805493757967,
+      "sensor_noise": 0.013520174310195055
+    },
+    {
+      "cell": [
+        3,
+        0
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.32300335346556874,
+        "detuning": -1.9166168006415374,
+        "coupling": 0.14319043500759648,
+        "phase_noise": 0.12191237954392825,
+        "breath_noise": 0.0302359988872424,
+        "sensor_noise": 0.06754923260530563,
+        "seconds": 243.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -17.16594151727919,
+      "true_index": 0.27663919291225675,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -17.169913963038198,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -16.922326072297352,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.18787256048824474,
+      "pipeline_error": null,
+      "detuning": 1.9166168006415374,
+      "sensor_noise": 0.06754923260530563
+    },
+    {
+      "cell": [
+        2,
+        1
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.34888381285909364,
+        "detuning": 1.3775841318058468,
+        "coupling": 0.06642599030755526,
+        "phase_noise": 0.5463508900452404,
+        "breath_noise": 0.019865809110504996,
+        "sensor_noise": 0.11144571453626018,
+        "seconds": 252.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 13.411933255494752,
+      "true_index": 0.028038675679770367,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 1.0,
+      "oracle_slips": 13.397516775307585,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.7,
+      "pipeline_slips": 32.64966843785477,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 0.34323817763493025,
+      "pipeline_error": null,
+      "detuning": 1.3775841318058468,
+      "sensor_noise": 0.11144571453626018
+    },
+    {
+      "cell": [
+        3,
+        4
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.2595480833134016,
+        "detuning": 1.7737640638893382,
+        "coupling": 0.17661925232668957,
+        "phase_noise": 0.5370992201381732,
+        "breath_noise": 0.05905791719931013,
+        "sensor_noise": 0.4163406242100158,
+        "seconds": 116.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 12.438644282498709,
+      "true_index": 0.27181972079653527,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 12.43581523094677,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.375,
+      "pipeline_slips": 11.32604197308997,
+      "pipeline_ratio": "11:3",
+      "beat_error_ms": 1.0069552075435695,
+      "pipeline_error": null,
+      "detuning": 1.7737640638893382,
+      "sensor_noise": 0.4163406242100158
+    },
+    {
+      "cell": [
+        5,
+        1
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.1756197332203862,
+        "detuning": 2.666670629583379,
+        "coupling": 0.1673262995239911,
+        "phase_noise": 0.12633372877919635,
+        "breath_noise": 0.06627412072435437,
+        "sensor_noise": 0.19536580067797507,
+        "seconds": 298.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 20.231415366612236,
+      "true_index": 0.1790232314425735,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.125,
+      "oracle_slips": 20.217851188727288,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.125,
+      "pipeline_slips": 19.096146899675748,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 0.6053727528545494,
+      "pipeline_error": null,
+      "detuning": 2.666670629583379,
+      "sensor_noise": 0.19536580067797507
+    },
+    {
+      "cell": [
+        4,
+        0
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3826625026053906,
+        "detuning": 2.42703582614491,
+        "coupling": 0.2796544397110213,
+        "phase_noise": 0.020036909181357965,
+        "breath_noise": 0.06508747895279943,
+        "sensor_noise": 0.04404824907175655,
+        "seconds": 147.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 27.23812642699048,
+      "true_index": 0.24040800067682244,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 27.203524337005838,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 25.80659735592288,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.13175047244828875,
+      "pipeline_error": null,
+      "detuning": 2.42703582614491,
+      "sensor_noise": 0.04404824907175655
+    },
+    {
+      "cell": [
+        5,
+        3
+      ],
+      "genome": {
+        "n": 7,
+        "m": 2,
+        "breath_hz": 0.32606713623787054,
+        "detuning": -2.9727046717093857,
+        "coupling": 0.3203365517681057,
+        "phase_noise": 0.1739195996490928,
+        "breath_noise": 0.0033598673351029175,
+        "sensor_noise": 0.3660103187722819,
+        "seconds": 132.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -37.60850913576429,
+      "true_index": 0.1414521959674926,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.275,
+      "oracle_slips": 2.3676495569637876,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.525,
+      "pipeline_slips": 2.2442512742263228,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 1.1632185251642113,
+      "pipeline_error": null,
+      "detuning": 2.9727046717093857,
+      "sensor_noise": 0.3660103187722819
+    },
+    {
+      "cell": [
+        4,
+        5
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.2832824339635123,
+        "detuning": 2.4544814273682203,
+        "coupling": 0.05293648765842832,
+        "phase_noise": 0.5881425248499471,
+        "breath_noise": 0.018910848624895317,
+        "sensor_noise": 0.545210545665728,
+        "seconds": 128.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": 4.437623722470245,
+      "true_index": 0.1802274776160048,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 4.436455958271742,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -5.807677589300972,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 1.6261764292337944,
+      "pipeline_error": null,
+      "detuning": 2.4544814273682203,
+      "sensor_noise": 0.545210545665728
+    },
+    {
+      "cell": [
+        3,
+        1
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.2272310188014294,
+        "detuning": -1.696927911518558,
+        "coupling": 0.6777545114839889,
+        "phase_noise": 0.38875215194313445,
+        "breath_noise": 0.09769526945795749,
+        "sensor_noise": 0.13220798541689502,
+        "seconds": 102.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 0,
+      "parent": null,
+      "call": "right",
+      "true_slips": -15.39988872345151,
+      "true_index": 0.33640464804038994,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -15.3988339041174,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -13.637293862031319,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 0.3921207434984808,
+      "pipeline_error": null,
+      "detuning": 1.696927911518558,
+      "sensor_noise": 0.13220798541689502
+    },
+    {
+      "cell": [
+        5,
+        4
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.2506777734853075,
+        "detuning": 2.590194125520521,
+        "coupling": 0.11465485085728104,
+        "phase_noise": 0.5768613273054432,
+        "breath_noise": 0.060358874159259425,
+        "sensor_noise": 0.4705177060203216,
+        "seconds": 116.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 10,
+      "parent": [
+        3,
+        4
+      ],
+      "call": "right",
+      "true_slips": 21.029502766170513,
+      "true_index": 0.09648747584651544,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.425,
+      "oracle_slips": -7.2749591759840895,
+      "oracle_ratio": "10:3",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.625,
+      "pipeline_slips": -22.499606209636557,
+      "pipeline_ratio": "10:3",
+      "beat_error_ms": 1.424181770211419,
+      "pipeline_error": null,
+      "detuning": 2.590194125520521,
+      "sensor_noise": 0.4705177060203216
+    },
+    {
+      "cell": [
+        5,
+        2
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.20444975253005593,
+        "detuning": 2.648301729522508,
+        "coupling": 0.1449098253586929,
+        "phase_noise": 0.107603091643924,
+        "breath_noise": 0.06936510506564088,
+        "sensor_noise": 0.2033450552704719,
+        "seconds": 299.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 14,
+      "parent": [
+        5,
+        1
+      ],
+      "call": "right",
+      "true_slips": 17.118684214749752,
+      "true_index": 0.21767204517750469,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 17.144735005599635,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 16.966548663644787,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 0.6297419054135389,
+      "pipeline_error": null,
+      "detuning": 2.648301729522508,
+      "sensor_noise": 0.2033450552704719
+    },
+    {
+      "cell": [
+        1,
+        5
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.2740402053364348,
+        "detuning": -0.8610191669239154,
+        "coupling": 0.09476220062321597,
+        "phase_noise": 0.26956508196696055,
+        "breath_noise": 0.03341527029437152,
+        "sensor_noise": 0.5628611209954305,
+        "seconds": 163.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 27,
+      "parent": [
+        2,
+        5
+      ],
+      "call": "right",
+      "true_slips": -2.8251033328819197,
+      "true_index": 0.5014196415504103,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -2.8290103002562312,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -15.920012537081096,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 1.6823354386090728,
+      "pipeline_error": null,
+      "detuning": 0.8610191669239154,
+      "sensor_noise": 0.5628611209954305
+    },
+    {
+      "cell": [
+        3,
+        3
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.2843225343309212,
+        "detuning": 1.9432546797326051,
+        "coupling": 0.3447098674131258,
+        "phase_noise": 0.5112559684686314,
+        "breath_noise": 0.05318955002899808,
+        "sensor_noise": 0.3312188258938036,
+        "seconds": 125.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 30,
+      "parent": [
+        3,
+        4
+      ],
+      "call": "right",
+      "true_slips": 37.35158805740361,
+      "true_index": 0.18554700487031153,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.05,
+      "oracle_slips": 37.296487978831756,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.075,
+      "pipeline_slips": 12.675680778928594,
+      "pipeline_ratio": "7:2",
+      "beat_error_ms": 1.0398721032771618,
+      "pipeline_error": null,
+      "detuning": 1.9432546797326051,
+      "sensor_noise": 0.3312188258938036
+    },
+    {
+      "cell": [
+        5,
+        0
+      ],
+      "genome": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.24987874464827703,
+        "detuning": 3.0,
+        "coupling": 0.25094171961619194,
+        "phase_noise": 0.07573304008372185,
+        "breath_noise": 0.07552493760512506,
+        "sensor_noise": 0.09128194027188072,
+        "seconds": 300.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 33,
+      "parent": [
+        5,
+        2
+      ],
+      "call": "right",
+      "true_slips": 33.60551712362897,
+      "true_index": 0.1580259560915345,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -7.100397814995133,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -6.6438494240498,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.30945942687310435,
+      "pipeline_error": null,
+      "detuning": 3.0,
+      "sensor_noise": 0.09128194027188072
+    },
+    {
+      "cell": [
+        4,
+        4
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.3076128979773031,
+        "detuning": 2.1785850362333052,
+        "coupling": 0.05,
+        "phase_noise": 0.6,
+        "breath_noise": 0.03554711173904222,
+        "sensor_noise": 0.4864585137357086,
+        "seconds": 116.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 34,
+      "parent": [
+        4,
+        5
+      ],
+      "call": "right",
+      "true_slips": 5.56350382092247,
+      "true_index": 0.0739670990020641,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 1.0,
+      "oracle_slips": 20.30507597729498,
+      "oracle_ratio": "5:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 1.0,
+      "pipeline_slips": 16.742897819091215,
+      "pipeline_ratio": "5:1",
+      "beat_error_ms": 1.39696449824811,
+      "pipeline_error": null,
+      "detuning": 2.1785850362333052,
+      "sensor_noise": 0.4864585137357086
+    },
+    {
+      "cell": [
+        3,
+        5
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.31627011847927455,
+        "detuning": 1.9800442500513202,
+        "coupling": 0.05376083992273312,
+        "phase_noise": 0.5747923822687422,
+        "breath_noise": 0.02891737050239692,
+        "sensor_noise": 0.526360823155335,
+        "seconds": 115.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 35,
+      "parent": [
+        4,
+        5
+      ],
+      "call": "right",
+      "true_slips": 6.0263364895736595,
+      "true_index": 0.02434645399745282,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 1.0,
+      "oracle_slips": -14.754860599270332,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "no evidence of interaction",
+      "pipeline_p": 0.975,
+      "pipeline_slips": -14.968929112314799,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 1.8952373063925165,
+      "pipeline_error": null,
+      "detuning": 1.9800442500513202,
+      "sensor_noise": 0.526360823155335
+    },
+    {
+      "cell": [
+        4,
+        3
+      ],
+      "genome": {
+        "n": 4,
+        "m": 1,
+        "breath_hz": 0.2975146468363731,
+        "detuning": 2.2655905309185846,
+        "coupling": 0.4038621300548567,
+        "phase_noise": 0.3182568355823505,
+        "breath_noise": 0.0,
+        "sensor_noise": 0.3399083409016975,
+        "seconds": 196.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 61,
+      "parent": [
+        4,
+        2
+      ],
+      "call": "right",
+      "true_slips": 24.298749828645967,
+      "true_index": 0.2598520311419162,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 24.295357724945383,
+      "oracle_ratio": "4:1",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 23.37779277811962,
+      "pipeline_ratio": "4:1",
+      "beat_error_ms": 1.0067098220361004,
+      "pipeline_error": null,
+      "detuning": 2.2655905309185846,
+      "sensor_noise": 0.3399083409016975
+    },
+    {
+      "cell": [
+        1,
+        3
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.3813978320227449,
+        "detuning": 0.8343261125404107,
+        "coupling": 0.3915815971794316,
+        "phase_noise": 0.13433927079054533,
+        "breath_noise": 0.03144903142869987,
+        "sensor_noise": 0.34865536686660015,
+        "seconds": 185.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 81,
+      "parent": [
+        0,
+        3
+      ],
+      "call": "right",
+      "true_slips": 5.954722298133855,
+      "true_index": 0.7520219322466741,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 5.953126937696549,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 5.92326869098473,
+      "pipeline_ratio": "11:3",
+      "beat_error_ms": 1.087339453007985,
+      "pipeline_error": null,
+      "detuning": 0.8343261125404107,
+      "sensor_noise": 0.34865536686660015
+    },
+    {
+      "cell": [
+        2,
+        3
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.37320660238545506,
+        "detuning": 1.2762684943370108,
+        "coupling": 0.13481133636385062,
+        "phase_noise": 0.18948340854250517,
+        "breath_noise": 0.023835713674377396,
+        "sensor_noise": 0.3745154456614107,
+        "seconds": 168.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 101,
+      "parent": [
+        1,
+        3
+      ],
+      "call": "right",
+      "true_slips": 11.191590833922318,
+      "true_index": 0.37161764756508064,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 11.189603224328255,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 10.85556379428712,
+      "pipeline_ratio": "11:3",
+      "beat_error_ms": 1.0442130925252258,
+      "pipeline_error": null,
+      "detuning": 1.2762684943370108,
+      "sensor_noise": 0.3745154456614107
+    },
+    {
+      "cell": [
+        2,
+        2
+      ],
+      "genome": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.1476730729697317,
+        "detuning": 1.1017558979647861,
+        "coupling": 0.061641130135449945,
+        "phase_noise": 0.41027481670182125,
+        "breath_noise": 0.03548824729989791,
+        "sensor_noise": 0.20412833945797165,
+        "seconds": 264.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 110,
+      "parent": [
+        0,
+        0
+      ],
+      "call": "right",
+      "true_slips": 3.7260754619535685,
+      "true_index": 0.31557333854043224,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 3.7261166360997917,
+      "oracle_ratio": "9:2",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 4.143982128102706,
+      "pipeline_ratio": "9:2",
+      "beat_error_ms": 0.5472584608816611,
+      "pipeline_error": null,
+      "detuning": 1.1017558979647861,
+      "sensor_noise": 0.20412833945797165
+    },
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "genome": {
+        "n": 11,
+        "m": 3,
+        "breath_hz": 0.1622664028902112,
+        "detuning": -0.8639453944103465,
+        "coupling": 0.26580808712536214,
+        "phase_noise": 0.29030530471217164,
+        "breath_noise": 0.011440082427897546,
+        "sensor_noise": 0.016943723880468182,
+        "seconds": 189.0,
+        "fs": 250.0
+      },
+      "fitness": 0.0,
+      "born": 182,
+      "parent": [
+        2,
+        0
+      ],
+      "call": "right",
+      "true_slips": -13.339296457682403,
+      "true_index": 0.4188954724993045,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -13.340658635786427,
+      "oracle_ratio": "11:3",
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -13.155385057239972,
+      "pipeline_ratio": "11:3",
+      "beat_error_ms": 0.05480339427776926,
+      "pipeline_error": null,
+      "detuning": 0.8639453944103465,
+      "sensor_noise": 0.016943723880468182
+    }
+  ]
+}

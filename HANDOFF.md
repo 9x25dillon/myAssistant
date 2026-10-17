@@ -186,3 +186,12 @@ patern-coding/  main has #2
   - the local branch `porter-context-relay-split` in myAssistant (safe to delete)
   - the `/home/user/9x25dillon/` survey clones
 - The Gmail connector needs authorizing in claude.ai's connector settings before any session can use it.
+
+## Addendum — 2026-10-17
+
+- `infrasonomancer/` — infrasonomancer 3.1: deterministic-chaos generative/analysis toolkit with every tool a CLI endpoint
+  (`python -m infrasonomancer {compose,evolve,beats,coherence,pll,series,fractal,dualcast,cardioresp,envelope}`).
+  102 tests (`cd infrasonomancer && python -m unittest`). Real-data validation: `python validate_real.py --data biodata --fetch`
+  (GPL recordings fetched from PyPI with SHA-256 check; used locally, not redistributed). Large listening WAVs are not
+  committed; regenerate with `cardioresp --sonify`.
+- `docs/BPSN-build-spec-v1.0.md` — BPSN Build Specification v1.0 (Phases 1–4), markdown export of the Claude Docs version.
