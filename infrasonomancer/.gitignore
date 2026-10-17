@@ -1,0 +1,6 @@
+# large renders: the commands in README.md regenerate them bit for bit
+out/listen/
+out/**/cascade.wav
+out/**/dualcast_pair.wav
+out/**/render.wav
+out/**/recording.csv
