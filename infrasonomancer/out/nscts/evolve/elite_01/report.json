@@ -1,0 +1,43 @@
+{
+  "seed": "NeuroSymbiotic Coherence Seed",
+  "sha256": "7b12b1bef3881679",
+  "genome": {
+    "theta": 5.859004920833778,
+    "radius": 0.9859492774970281,
+    "zoom": 1.577068170491883,
+    "density": 0.0820487959967481,
+    "mode": "aeolian",
+    "root": 38
+  },
+  "julia_c": [
+    0.288595,
+    -0.02058
+  ],
+  "mode": "D aeolian",
+  "notes": 76,
+  "seconds": 32.0,
+  "polyphony_max": 4,
+  "pitch_range": [
+    38,
+    72
+  ],
+  "pitch_class_entropy_bits": 2.641847470199107,
+  "fractal_boundary_dimension": 1.2252330517285337,
+  "hurst_of_texture_increments": 0.40165610101234045,
+  "texture_recurrence": {
+    "h1_bars": 9,
+    "longest_h1_over_diameter": 0.1482432345807139
+  },
+  "lfo_hz": [
+    0.1,
+    8.0
+  ],
+  "onset_rate_vs_lfo_corr": 0.3403114100551273,
+  "audio": {
+    "sample_rate": 22050,
+    "channels": 1,
+    "peak_dbfs": -1.0121998671015806,
+    "rms_dbfs": -15.066915971452786,
+    "pcm_sha256": "73c2a230f07be03a"
+  }
+}

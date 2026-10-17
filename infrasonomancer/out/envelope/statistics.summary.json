@@ -1,0 +1,137 @@
+{
+  "name": "envelope",
+  "evaluations": 225,
+  "coverage": 0.9722222222222222,
+  "baseline": {
+    "scenario": {
+      "n": 4,
+      "m": 1,
+      "breath_hz": 0.25,
+      "detuning": 0.0,
+      "coupling": 0.3,
+      "phase_noise": 0.05,
+      "breath_noise": 0.02,
+      "sensor_noise": 0.05,
+      "seconds": 300.0,
+      "fs": 250.0
+    },
+    "fitness": 0.0,
+    "call": "right",
+    "true_slips": 0.3371125165665872,
+    "oracle_verdict": "locked",
+    "pipeline_verdict": "locked"
+  },
+  "reproducible_failures": 1,
+  "safe_cells": 34,
+  "failures": [
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "fitness": 0.6598325934833734,
+      "call": "missed lock",
+      "true_slips": -0.6803348130332532,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.325,
+      "oracle_slips": -0.6806869125768307,
+      "pipeline_verdict": "locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -0.26066288852239,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 4,
+        "m": 1,
+        "breath_hz": 0.17875036164204638,
+        "detuning": -0.3951850671340492,
+        "coupling": 0.1335040703461958,
+        "phase_noise": 0.43085767280010717,
+        "breath_noise": 0.02153562664820154,
+        "sensor_noise": 0.40395980433902756,
+        "seconds": 189.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.9575836090895482,
+        0.8725739510567199
+      ],
+      "reproduces": 2
+    }
+  ],
+  "worst_case_map": {
+    "rows": "detuning",
+    "columns": "breath_noise",
+    "edges": {
+      "detuning": [
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0
+      ],
+      "breath_noise": [
+        0.0,
+        0.016666666666666666,
+        0.03333333333333333,
+        0.05,
+        0.06666666666666667,
+        0.08333333333333333,
+        0.1
+      ]
+    },
+    "fitness": [
+      [
+        0.0,
+        0.6598325934833734,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        null
+      ]
+    ]
+  },
+  "target": "statistics"
+}

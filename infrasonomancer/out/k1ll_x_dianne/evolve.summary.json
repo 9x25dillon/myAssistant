@@ -1,0 +1,79 @@
+{
+  "name": "infrasonomantic digiology – K1LL x DIANNE v1",
+  "evaluations": 265,
+  "valid": 265,
+  "coverage": 0.3611111111111111,
+  "qd_score": 2.3296836447069444,
+  "baseline": {
+    "genome": {
+      "theta": 4.909670479383138,
+      "radius": 0.9959212391719621,
+      "zoom": 1.3633526176736737,
+      "density": 0.08,
+      "mode": "lydian",
+      "root": 43
+    },
+    "valid": true,
+    "fitness": 0.07906795144495382,
+    "cell": [
+      3,
+      5
+    ],
+    "edge_dimension": 1.2451817222554384,
+    "pitch_class_entropy_bits": 2.776279448167832
+  },
+  "gain_over_baseline": 0.20365901335773995,
+  "held_out": {
+    "estimator": "recurrence median over dims 2-4 at 32 and 64 points (the search used 48)",
+    "baseline": 0.10528313982023396,
+    "champion": 0.29636960457691,
+    "gain": 0.191086464756676
+  },
+  "champion": {
+    "cell": [
+      2,
+      3
+    ],
+    "fitness": 0.28272696480269377,
+    "edge_dimension": 1.2090071702920224,
+    "pitch_class_entropy_bits": 2.573102962294849,
+    "genome": {
+      "theta": 5.99305168918927,
+      "radius": 0.9876697270783164,
+      "zoom": 1.5539746875393554,
+      "density": 0.0428798069307691,
+      "mode": "dorian",
+      "root": 43
+    }
+  },
+  "objective": "recurrence",
+  "rendered": [
+    {
+      "dir": "out/k1ll_x_dianne/evolve/champion",
+      "fitness": 0.28272696480269377,
+      "cell": [
+        2,
+        3
+      ],
+      "pcm_sha256": "9c89c120a5978176"
+    },
+    {
+      "dir": "out/k1ll_x_dianne/evolve/elite_01",
+      "fitness": 0.255165566887656,
+      "cell": [
+        2,
+        5
+      ],
+      "pcm_sha256": "975c2b6a73366772"
+    },
+    {
+      "dir": "out/k1ll_x_dianne/evolve/elite_02",
+      "fitness": 0.24425027308723118,
+      "cell": [
+        3,
+        3
+      ],
+      "pcm_sha256": "33399d058937e96b"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "seed": "infrasonomantic digiology – K1LL x DIANNE v1",
+  "sha256": "50ed5cc8a48b3bbb",
+  "genome": {
+    "theta": 5.974852074038103,
+    "radius": 0.9930424630286336,
+    "zoom": 1.6,
+    "density": 0.042025109935462546,
+    "mode": "dorian",
+    "root": 42
+  },
+  "julia_c": [
+    0.271981,
+    -0.008105
+  ],
+  "mode": "F# dorian",
+  "notes": 73,
+  "seconds": 32.0,
+  "polyphony_max": 4,
+  "pitch_range": [
+    42,
+    76
+  ],
+  "pitch_class_entropy_bits": 2.5191599948127754,
+  "fractal_boundary_dimension": 1.256867776914582,
+  "hurst_of_texture_increments": 0.3160556721670697,
+  "texture_recurrence": {
+    "h1_bars": 8,
+    "longest_h1_over_diameter": 0.21492169751994872
+  },
+  "lfo_hz": [
+    0.1,
+    8.0
+  ],
+  "onset_rate_vs_lfo_corr": 0.5112679171926177,
+  "audio": {
+    "sample_rate": 22050,
+    "channels": 1,
+    "peak_dbfs": -1.0121998671015806,
+    "rms_dbfs": -14.650009001803099,
+    "pcm_sha256": "33399d058937e96b"
+  }
+}

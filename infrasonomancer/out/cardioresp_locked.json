@@ -1,0 +1,91 @@
+{
+  "scenario": {
+    "n": 4,
+    "m": 1,
+    "breath_hz": 0.25,
+    "detuning": 0.0,
+    "coupling": 0.3,
+    "phase_noise": 0.05,
+    "breath_noise": 0.02,
+    "sensor_noise": 0.05,
+    "seconds": 300.0,
+    "fs": 250.0
+  },
+  "truth": {
+    "heart_hz": 1.0,
+    "locked_without_noise": true,
+    "true_index": 0.9932042520074817,
+    "phase_slips": 0.05846915885827767,
+    "beats": 298,
+    "fixed_point_psi": 0.0
+  },
+  "assessment": {
+    "truth": {
+      "net_slips": 0.12548643820632807,
+      "locked": true,
+      "span_s": [
+        1.3082032855117767,
+        298.6042975666034
+      ]
+    },
+    "oracle": {
+      "ratio": "4:1",
+      "index": 0.9927335739390106,
+      "p": 0.01,
+      "net_slips": 0.12225713194392382,
+      "verdict": "locked",
+      "x_rate_hz": 0.2498530751889569,
+      "y_rate_hz": 0.999000937593163,
+      "locked_fraction": 0.4074074074074074,
+      "windows_p": 0.01
+    },
+    "pipeline": {
+      "ratio": "4:1",
+      "index": 0.9950814311291355,
+      "p": 0.01,
+      "net_slips": 0.037290525063693035,
+      "verdict": "locked",
+      "x_rate_hz": 0.24982861713764942,
+      "y_rate_hz": 0.9991848074759673,
+      "locked_fraction": 0.36538461538461536,
+      "windows_p": 0.01,
+      "beats_detected": 298,
+      "breath_band_hz": [
+        0.162255686193103,
+        0.3369925790164447
+      ],
+      "beat_error_ms_median": 0.15059400370631693
+    },
+    "pipeline_error": null,
+    "oracle_locked": true,
+    "pipeline_locked": true,
+    "oracle_call": "right",
+    "pipeline_call": "right"
+  },
+  "sonification": {
+    "carrier_hz": 4991.0,
+    "carrier_source": "alias of the source's 8.5 THz at its 9999 Hz grid",
+    "sample_rate": 22050,
+    "depth": 0.35,
+    "mean_heart_hz": 0.9989451365401213,
+    "left_hz": 4990.50052743173,
+    "right_hz": 4991.49947256827,
+    "nulls": 299,
+    "rate_hz": 0.9990001094257215,
+    "timing_error_ms": {
+      "median_abs": 0.045351473922902494,
+      "max_abs": 0.36281179138321995
+    },
+    "null_offset_from_mid_cycle_ms": {
+      "max_abs": 5.680508834188913
+    },
+    "depth_db": {
+      "predicted_mean": -16.512625900319343,
+      "measured_mean": -16.5123846007147,
+      "max_abs_error_db": 0.000514378851974584,
+      "scored_nulls": 299
+    },
+    "stroboscopic_lock_index": 0.9916506930204637,
+    "mono_to_stereo_energy_db": -3.007296488387086
+  }
+}

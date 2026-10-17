@@ -1,0 +1,273 @@
+{
+  "name": "envelope",
+  "evaluations": 225,
+  "coverage": 0.9722222222222222,
+  "baseline": {
+    "scenario": {
+      "n": 4,
+      "m": 1,
+      "breath_hz": 0.25,
+      "detuning": 0.0,
+      "coupling": 0.3,
+      "phase_noise": 0.05,
+      "breath_noise": 0.02,
+      "sensor_noise": 0.05,
+      "seconds": 300.0,
+      "fs": 250.0
+    },
+    "fitness": 0.0,
+    "call": "agrees with oracle",
+    "true_slips": 0.3371125165665872,
+    "oracle_verdict": "locked",
+    "pipeline_verdict": "locked"
+  },
+  "reproducible_failures": 3,
+  "safe_cells": 30,
+  "failures": [
+    {
+      "cell": [
+        1,
+        5
+      ],
+      "fitness": 0.977978859783759,
+      "call": "misses oracle's lock",
+      "true_slips": -0.051278049275573834,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.04404228043248205,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -18.57045703827509,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 3,
+        "m": 1,
+        "breath_hz": 0.19307132744195815,
+        "detuning": -0.7951170908545973,
+        "coupling": 0.285773167768988,
+        "phase_noise": 0.08107656459989193,
+        "breath_noise": 0.06502485105517342,
+        "sensor_noise": 0.5084220093307587,
+        "seconds": 159.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.9780620941819429,
+        0.839721963316578,
+        0.8796600280948057
+      ],
+      "reproduces": 3
+    },
+    {
+      "cell": [
+        0,
+        5
+      ],
+      "fitness": 0.9677576907514958,
+      "call": "misses oracle's lock",
+      "true_slips": -0.04323812965810232,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.06448461849700836,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -41.042272950633645,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.15817713669710226,
+        "detuning": -0.1298664177664377,
+        "coupling": 0.7861185314842182,
+        "phase_noise": 0.1301349285499584,
+        "breath_noise": 0.06465925574386804,
+        "sensor_noise": 0.5584809496603729,
+        "seconds": 272.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.9762468162580331,
+        0.7829688772199296,
+        0.9233789709053071
+      ],
+      "reproduces": 3
+    },
+    {
+      "cell": [
+        0,
+        4
+      ],
+      "fitness": 0.9189863252262017,
+      "call": "misses oracle's lock",
+      "true_slips": -0.16952671718616544,
+      "oracle_verdict": "locked",
+      "oracle_p": 0.025,
+      "oracle_slips": -0.1620273495475966,
+      "pipeline_verdict": "interacting, not locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": -15.804876837885155,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.16132561077180124,
+        "detuning": -0.3346410469017116,
+        "coupling": 0.5956238813265937,
+        "phase_noise": 0.23412263719849033,
+        "breath_noise": 0.04541381236041414,
+        "sensor_noise": 0.4797331632247662,
+        "seconds": 281.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.9066946367630133,
+        0.8415094930643954,
+        0.953999259026119
+      ],
+      "reproduces": 3
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "fitness": 0.5549211847823203,
+      "call": "locks where oracle does not",
+      "true_slips": 1.4578800239473535,
+      "oracle_verdict": "interacting, not locked",
+      "oracle_p": 0.025,
+      "oracle_slips": 1.4393694782585629,
+      "pipeline_verdict": "locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 0.766171445752796,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 5,
+        "m": 1,
+        "breath_hz": 0.17337872675150148,
+        "detuning": 0.210814403553938,
+        "coupling": 0.16634321259945312,
+        "phase_noise": 0.47467221422140454,
+        "breath_noise": 0.0937156945803574,
+        "sensor_noise": 0.14854842796339962,
+        "seconds": 253.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reproduces": 0
+    },
+    {
+      "cell": [
+        0,
+        3
+      ],
+      "fitness": 0.5,
+      "call": "locks where oracle does not",
+      "true_slips": -0.022341227951706056,
+      "oracle_verdict": "no evidence of interaction",
+      "oracle_p": 0.65,
+      "oracle_slips": -0.012155162251010857,
+      "pipeline_verdict": "locked",
+      "pipeline_p": 0.025,
+      "pipeline_slips": 0.1608113821368692,
+      "pipeline_error": null,
+      "scenario": {
+        "n": 9,
+        "m": 2,
+        "breath_hz": 0.4,
+        "detuning": -0.1385605247197304,
+        "coupling": 0.31592212788188617,
+        "phase_noise": 0.25627536328400935,
+        "breath_noise": 0.0,
+        "sensor_noise": 0.3555945687780564,
+        "seconds": 202.0,
+        "fs": 250.0
+      },
+      "replay_fitness": [
+        0.0,
+        0.0,
+        0.8898049428570093
+      ],
+      "reproduces": 1
+    }
+  ],
+  "worst_case_map": {
+    "rows": "detuning",
+    "columns": "sensor_noise",
+    "edges": {
+      "detuning": [
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0
+      ],
+      "sensor_noise": [
+        0.0,
+        0.09999999999999999,
+        0.19999999999999998,
+        0.3,
+        0.39999999999999997,
+        0.49999999999999994,
+        0.6
+      ]
+    },
+    "fitness": [
+      [
+        0.0,
+        0.5549211847823203,
+        0.0,
+        0.5,
+        0.9189863252262017,
+        0.9677576907514958
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.977978859783759
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "target": "measurement"
+}
