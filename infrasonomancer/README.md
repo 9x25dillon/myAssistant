@@ -1,4 +1,4 @@
-# Fractal Infrasonomancer 3.1 · measured
+# Fractal Infrasonomancer 3.2 · measured
 
 Seed text → Julia fractal → score (MIDI) and audio (WAV) with a 0.1–8 Hz pulse, plus the measurement tools the
 source texts only named, each callable on your own files. Python ≥ 3.10 and numpy; nothing else at run time.
@@ -23,6 +23,7 @@ seed ─sha256─▶ Genome (θ, radius, zoom, density, mode, root) ─▶ Julia
 | `fractal --c RE,IM \| --seed TEXT \| --image PNG` | box-counting dimension; writes the set or the mask as PNG | PNG, JSON |
 | `dualcast [--carrier --deviation --samples ...] [--exact]` | the source texts' dual-wavelength cast, reproduced and measured | `source_stereo.wav combined.wav transmitted.wav analysis.json` |
 | `cardioresp [--n --m --detuning --coupling ...] [--sonify]` | breath and heart as coupled oscillators: raw recording, ground truth, assessment; the counter-pair render | `recording.csv beats_true.csv assessment.json dualcast_pair.wav nulls.csv` |
+| `cascade [--generators 2,3 --depth 6 ...] [--config cascade.json]` | the recoherence cascade: coupled voices beat, lock, and by locking set off the next, higher generation | `cascade.wav timeline.csv cascade.json` |
 | `envelope [--target locking\|statistics\|measurement] [--axes A,B]` | the MAP-Elites engine repurposed: worst case per cell of a scenario grid, failures replayed | `archive.json map.csv` |
 
 Inputs: `.wav` (any PCM width, float, extensible), `.npy` (with `--fs`), text columns (CSV/TSV/`;`/whitespace,
@@ -48,8 +49,12 @@ python -m infrasonomancer cardioresp --detuning 2.5 --sonify --out out/cardiores
 python -m infrasonomancer envelope --target locking --axes detuning,sensor_noise --iterations 200 --out out/envelope/locking
 python -m infrasonomancer envelope --target statistics --axes detuning,breath_noise --iterations 200 --out out/envelope/statistics
 python -m infrasonomancer envelope --target measurement --axes detuning,sensor_noise --iterations 200 --out out/envelope/measurement
+python -m infrasonomancer cascade --out out/cascade
+python -m infrasonomancer cascade --generators 2,3/2 --depth 5 --f-max 2500 --out out/cascade_fifths
 python -m unittest discover -s tests -t .
 ```
+
+The WAVs from `cascade` (≈ 12 MB each) are not committed; the commands above regenerate them bit for bit.
 
 ## Evidence
 
@@ -158,6 +163,68 @@ kept: template validation (115 → 109 detections; it also changed a validated r
 matched-filter pass (115 → 147, and the 25-minute recording's count moved from 1938 to 1937). On the real recordings the scanned test still finds no phase interaction (p 0.59, 0.86),
 while breathing↔heart-rate coherence is significant: in them the coupling is in rate, not in phase.
 
+## 3.2: the recoherence cascade
+
+**What it does.** Voices sit on a lattice f0 · Π gₖ^eₖ. By default the generators are 2 and 3, so every voice is a
+harmonic of the root: the cascade grows the root's own overtone series. A voice is born slightly detuned, so one of
+its partials beats against one of its parent's (child partial q = parent partial p for g = p/q). The coupling between
+them then ramps up. The beat slows as √(Δ² − (1 + ε)²K²) and stops: Adler's equation, as in `cardioresp`, but here it
+is audible. A voice that has stayed locked to every parent for `dwell_s` sets off its children, so each generation's
+stillness starts the next, higher one. Branches that meet (2·3 = 3·2) merge into one voice. Phases are integrated as
+slow deviations from exact rational frequencies, and the audio is synthesised from those same phases, so every number
+below is measured on what you hear.
+
+**The default run** (`out/cascade`, seed "recoherence", f0 61.68 Hz):
+
+| depth | voices (× f0) | first born, s | all coherent, s |
+|---|---|---|---|
+| 1 | 2, 3 | 0.5 | 14.7 |
+| 2 | 4, 6, 9 | 13.1 | 32.2 |
+| 3 | 8, 12, 18, 27 | 25.3 | 47.0 |
+| 4 | 16, 24, 36, 54 | 39.1 | 70.0 |
+| 5 | 32, 48 | 50.1 | 75.7 |
+| 6 | 64 | 66.7 | 81.6 |
+
+- 17 voices: 16 coupled pairs, plus 7 merge relations that are checked but not forced.
+- All of them are still held after the cascade completes (no phase slip in the final 60 s).
+- Coherence rises from 0.71 at its lowest to 1.000. The fastest beat peaks at 2.25 Hz and ends at 0. The beat index
+  (fluctuation-weighted) peaks at 0.12 and ends at 0.
+- Spectral centroid 77 → 224 Hz: the climb. The prediction agrees with the rendered audio within 1% once locked.
+- Sensory dissonance per unit amplitude goes 0.035 → 0.043: the full 17-voice chord is barely rougher than the root
+  sounding alone.
+
+**Why 2 and 3, measured over four seeds:**
+
+| generators | end dissonance | end centroid | every pair held |
+|---|---|---|---|
+| **2, 3** (overtone series) | **0.034–0.046** | 210–236 Hz | 4/4 |
+| 2, 3, 5 (adds thirds, depth 4) | 0.043–0.055 | 184–204 Hz | 4/4 |
+| 2, 3/2 (stacked fifths, depth 5) | 0.123–0.149 | 174–216 Hz | 4/4 |
+
+2 and 3/2 give the same pitch classes, stacked as fifths. Its low voices share critical bands, which is the muddy-bass
+problem. A consonance guard (`--min-cents 150`) also drops 243/32, the 90-cent limma below 8.
+
+**What the measurements caught while building it** (each one is now fixed and pinned by a test):
+1. **Stalled at depth 2.** Coupling was sized from nominal detunings, but a locked parent no longer runs at its own
+   detuning. Each pair's Δ is now measured against the parent's actual frequency when the child is born.
+2. **Two parents frustrate the loop.** Each parent locks at its own phase offset, and the two pulls can cancel.
+   Coupling now runs along a spanning tree (the lowest-order coincidence). Exact ratios then make the merge relations
+   beat-free on their own.
+3. **Late branches unlocked old pairs.** A newborn's back-reaction pulled weakly coupled pairs off their lock.
+   Coupling now adapts: a pair still beating after its ramp strengthens (×e per `ramp_s`, capped for RK4 accuracy)
+   until it holds.
+4. **The centroid read 19% low against the audio.** Coincident partials add as phasors, not powers. The timeline now
+   merges them.
+
+**Evidence.**
+- **L0:** lock times, beat rates, coherence and the hold test (from the synthesis phases); Adler's slip rate (the test
+  matches it within 0.2%) and lock phase.
+- **L1:** sensory dissonance (Plomp & Levelt 1965; Sethares 1993) and the fluctuation weighting (Zwicker & Fastl) are
+  perceptual models used as proxies. The 0.1 Hz swell (`--breath-hz`) offers the resonance-frequency breathing pace
+  (Lehrer & Gevirtz 2014); it helps only if you breathe with it.
+- **L2, untested:** that hearing beats slow to stillness, or a cascade climbing, relaxes or focuses a listener. The
+  test: record ECG and respiration in silence and during playback, then compare `beats` (HRV) and `coherence` (RSA).
+
 ## Limits
 
 - Nothing below 20 Hz is emitted; the pulse is modulation of audible tones. In stereo the pulse is antiphase, so a
@@ -169,4 +236,6 @@ while breathing↔heart-rate coherence is significant: in them the coupling is i
 - The breath–heart model is the standard phase-oscillator abstraction; its failure maps describe this package's
   instruments on that model, not real physiology, and the envelope search covers 225 scenarios per map, not all.
 - Terahertz signals are outside audio entirely; the 4991 Hz carrier is what the source's arrays actually held.
+- The cascade's coupling is a model of how the voices move, not an acoustic coupling: real oscillators do not lock
+  by being played together. The audible result (beats slowing to stillness) is what the model specifies.
 - No health, entrainment or consciousness claims are made or implied.

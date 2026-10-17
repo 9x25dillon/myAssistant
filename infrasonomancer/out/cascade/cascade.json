@@ -1,0 +1,569 @@
+{
+  "seed": "recoherence",
+  "config": {
+    "seed": "recoherence",
+    "generators": [
+      "2",
+      "3"
+    ],
+    "depth": 6,
+    "f0": null,
+    "f_max": 4000.0,
+    "min_cents": 150.0,
+    "beat_hz": 0.6,
+    "coupling": 1.8,
+    "adapt": true,
+    "backreaction": 0.25,
+    "ramp_s": 8.0,
+    "dwell_s": 3.0,
+    "lock_hz": 0.02,
+    "stagger_s": 3.0,
+    "attack_s": 8.0,
+    "harmonics": 6,
+    "rolloff": 1.5,
+    "tilt_db_oct": -4.0,
+    "breath_hz": 0.1,
+    "breath_depth": 0.12,
+    "tail_s": 45.0,
+    "fade_s": 15.0,
+    "max_seconds": 300.0,
+    "control_hz": 100.0
+  },
+  "f0_hz": 61.67737465399447,
+  "generators": [
+    "2/1",
+    "3/1"
+  ],
+  "voices": 17,
+  "pairs": 23,
+  "seconds": 141.58,
+  "cascade_complete_s": 81.57000000000001,
+  "all_coherent": true,
+  "all_held_at_end": true,
+  "voices_born": 17,
+  "generations": [
+    {
+      "depth": 0,
+      "voices": 1,
+      "first_birth_s": 0.0,
+      "last_coherent_s": 0.0,
+      "pitches": [
+        "1/1"
+      ]
+    },
+    {
+      "depth": 1,
+      "voices": 2,
+      "first_birth_s": 0.46740409883787626,
+      "last_coherent_s": 14.700000000000001,
+      "pitches": [
+        "2/1",
+        "3/1"
+      ]
+    },
+    {
+      "depth": 2,
+      "voices": 3,
+      "first_birth_s": 13.121993270879505,
+      "last_coherent_s": 32.2,
+      "pitches": [
+        "4/1",
+        "6/1",
+        "9/1"
+      ]
+    },
+    {
+      "depth": 3,
+      "voices": 4,
+      "first_birth_s": 25.338010863767405,
+      "last_coherent_s": 47.02,
+      "pitches": [
+        "8/1",
+        "12/1",
+        "18/1",
+        "27/1"
+      ]
+    },
+    {
+      "depth": 4,
+      "voices": 4,
+      "first_birth_s": 39.09952311902672,
+      "last_coherent_s": 69.99,
+      "pitches": [
+        "16/1",
+        "24/1",
+        "36/1",
+        "54/1"
+      ]
+    },
+    {
+      "depth": 5,
+      "voices": 2,
+      "first_birth_s": 50.14604818868195,
+      "last_coherent_s": 75.66,
+      "pitches": [
+        "32/1",
+        "48/1"
+      ]
+    },
+    {
+      "depth": 6,
+      "voices": 1,
+      "first_birth_s": 66.66822565637953,
+      "last_coherent_s": 81.57000000000001,
+      "pitches": [
+        "64/1"
+      ]
+    }
+  ],
+  "timeline": {
+    "coherence_min": 0.7084458889900902,
+    "coherence_end": 0.9999999999999588,
+    "beat_index_peak": 0.12213275091811296,
+    "beat_index_end": 5.9475800538589744e-09,
+    "max_beat_hz_peak": 2.251079831520458,
+    "max_beat_hz_end": 9.119881602025291e-07,
+    "dissonance_start": 0.03460019669766936,
+    "dissonance_end": 0.04331743832686197,
+    "centroid_hz_start": 77.27933735132528,
+    "centroid_hz_end": 223.53907251931363
+  },
+  "voice_table": [
+    {
+      "index": 0,
+      "ratio": "1/1",
+      "freq_hz": 61.67737465399447,
+      "depth": 0,
+      "pan": 0.0,
+      "detune_hz": 0.0,
+      "born_s": 0.0,
+      "coherent_s": 0.0
+    },
+    {
+      "index": 1,
+      "ratio": "2/1",
+      "freq_hz": 123.35474930798894,
+      "depth": 1,
+      "pan": -0.8,
+      "detune_hz": 0.017232472863437386,
+      "born_s": 1.9063370018546235,
+      "coherent_s": 10.450000000000001
+    },
+    {
+      "index": 2,
+      "ratio": "3/1",
+      "freq_hz": 185.03212396198342,
+      "depth": 1,
+      "pan": 0.8,
+      "detune_hz": 0.24528582771259985,
+      "born_s": 0.46740409883787626,
+      "coherent_s": 14.700000000000001
+    },
+    {
+      "index": 3,
+      "ratio": "4/1",
+      "freq_hz": 246.70949861597788,
+      "depth": 2,
+      "pan": -0.8,
+      "detune_hz": 0.4707606475897539,
+      "born_s": 13.121993270879505,
+      "coherent_s": 24.23
+    },
+    {
+      "index": 4,
+      "ratio": "6/1",
+      "freq_hz": 370.06424792396683,
+      "depth": 2,
+      "pan": 0.0,
+      "detune_hz": 0.4906913496812674,
+      "born_s": 17.075514538211205,
+      "coherent_s": 32.2
+    },
+    {
+      "index": 5,
+      "ratio": "9/1",
+      "freq_hz": 555.0963718859502,
+      "depth": 2,
+      "pan": 0.8,
+      "detune_hz": 0.0967326926157082,
+      "born_s": 15.852552370360417,
+      "coherent_s": 30.970000000000002
+    },
+    {
+      "index": 6,
+      "ratio": "8/1",
+      "freq_hz": 493.41899723195576,
+      "depth": 3,
+      "pan": -0.8000000000000002,
+      "detune_hz": 0.5773161659590763,
+      "born_s": 25.338010863767405,
+      "coherent_s": 37.06
+    },
+    {
+      "index": 7,
+      "ratio": "12/1",
+      "freq_hz": 740.1284958479337,
+      "depth": 3,
+      "pan": -0.26666666666666666,
+      "detune_hz": -0.48153118184261423,
+      "born_s": 32.917829859526876,
+      "coherent_s": 44.85
+    },
+    {
+      "index": 8,
+      "ratio": "18/1",
+      "freq_hz": 1110.1927437719005,
+      "depth": 3,
+      "pan": 0.26666666666666666,
+      "detune_hz": -0.4112566170066512,
+      "born_s": 34.53655520445285,
+      "coherent_s": 47.02
+    },
+    {
+      "index": 9,
+      "ratio": "27/1",
+      "freq_hz": 1665.2891156578507,
+      "depth": 3,
+      "pan": 0.8000000000000002,
+      "detune_hz": 0.28128713938111477,
+      "born_s": 32.15743033220818,
+      "coherent_s": 47.01
+    },
+    {
+      "index": 10,
+      "ratio": "16/1",
+      "freq_hz": 986.8379944639115,
+      "depth": 4,
+      "pan": -0.8,
+      "detune_hz": 0.323891778722042,
+      "born_s": 39.09952311902672,
+      "coherent_s": 49.160000000000004
+    },
+    {
+      "index": 11,
+      "ratio": "24/1",
+      "freq_hz": 1480.2569916958673,
+      "depth": 4,
+      "pan": -0.4,
+      "detune_hz": 0.4111578304681843,
+      "born_s": 45.71404961331089,
+      "coherent_s": 56.99
+    },
+    {
+      "index": 12,
+      "ratio": "36/1",
+      "freq_hz": 2220.385487543801,
+      "depth": 4,
+      "pan": 0.0,
+      "detune_hz": -0.38197281832539026,
+      "born_s": 49.942231178078075,
+      "coherent_s": 69.99
+    },
+    {
+      "index": 13,
+      "ratio": "54/1",
+      "freq_hz": 3330.5782313157015,
+      "depth": 4,
+      "pan": 0.4,
+      "detune_hz": -0.5899718903084048,
+      "born_s": 48.78224973841778,
+      "coherent_s": 68.87
+    },
+    {
+      "index": 14,
+      "ratio": "32/1",
+      "freq_hz": 1973.675988927823,
+      "depth": 5,
+      "pan": -0.8,
+      "detune_hz": -0.32878196779519653,
+      "born_s": 50.14604818868195,
+      "coherent_s": 65.36
+    },
+    {
+      "index": 15,
+      "ratio": "48/1",
+      "freq_hz": 2960.5139833917347,
+      "depth": 5,
+      "pan": -0.4800000000000001,
+      "detune_hz": 0.11453410596705353,
+      "born_s": 57.78652410333351,
+      "coherent_s": 75.66
+    },
+    {
+      "index": 16,
+      "ratio": "64/1",
+      "freq_hz": 3947.351977855646,
+      "depth": 6,
+      "pan": -0.8000000000000002,
+      "detune_hz": 0.5873269055896829,
+      "born_s": 66.66822565637953,
+      "coherent_s": 81.57000000000001
+    }
+  ],
+  "pair_table": [
+    {
+      "child": 1,
+      "parent": 0,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.0127385175796261,
+      "k_max_rad_s": 0.6524882852693035,
+      "first_locked_s": 1.9100000000000001,
+      "held_at_end": true
+    },
+    {
+      "child": 2,
+      "parent": 0,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": true,
+      "start_beat_hz": 0.24528582771259982,
+      "k_max_rad_s": 3.467518038252205,
+      "first_locked_s": 6.22,
+      "held_at_end": true
+    },
+    {
+      "child": 3,
+      "parent": 1,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.4085857268239714,
+      "k_max_rad_s": 4.29506483543921,
+      "first_locked_s": 21.23,
+      "held_at_end": true
+    },
+    {
+      "child": 4,
+      "parent": 2,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.40321301042639224,
+      "k_max_rad_s": 7.420377153307944,
+      "first_locked_s": 24.36,
+      "held_at_end": true
+    },
+    {
+      "child": 4,
+      "parent": 1,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 0.32537011196224913,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 24.29,
+      "held_at_end": true
+    },
+    {
+      "child": 5,
+      "parent": 2,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": true,
+      "start_beat_hz": 0.0352193391328286,
+      "k_max_rad_s": 3.549433120759581,
+      "first_locked_s": 18.48,
+      "held_at_end": true
+    },
+    {
+      "child": 6,
+      "parent": 3,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.42090157911661524,
+      "k_max_rad_s": 4.166864891825194,
+      "first_locked_s": 34.06,
+      "held_at_end": true
+    },
+    {
+      "child": 7,
+      "parent": 4,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.733886918797665,
+      "k_max_rad_s": 7.890187163431446,
+      "first_locked_s": 41.550000000000004,
+      "held_at_end": true
+    },
+    {
+      "child": 7,
+      "parent": 3,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 0.7614484260145914,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 41.85,
+      "held_at_end": true
+    },
+    {
+      "child": 8,
+      "parent": 5,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.7833521421335523,
+      "k_max_rad_s": 14.183754075108817,
+      "first_locked_s": 43.21,
+      "held_at_end": true
+    },
+    {
+      "child": 8,
+      "parent": 4,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 0.836407372691669,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 44.02,
+      "held_at_end": true
+    },
+    {
+      "child": 9,
+      "parent": 5,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": true,
+      "start_beat_hz": 0.29067038963454866,
+      "k_max_rad_s": 11.58203099053356,
+      "first_locked_s": 38.4,
+      "held_at_end": true
+    },
+    {
+      "child": 10,
+      "parent": 6,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.008276435354871166,
+      "k_max_rad_s": 0.9819527444207398,
+      "first_locked_s": 39.1,
+      "held_at_end": true
+    },
+    {
+      "child": 11,
+      "parent": 7,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.09755254399298059,
+      "k_max_rad_s": 1.7729698938540601,
+      "first_locked_s": 53.99,
+      "held_at_end": true
+    },
+    {
+      "child": 11,
+      "parent": 6,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 0.08021040722186853,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 53.83,
+      "held_at_end": true
+    },
+    {
+      "child": 12,
+      "parent": 8,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 1.1176103699389324,
+      "k_max_rad_s": 23.776863539473432,
+      "first_locked_s": 58.120000000000005,
+      "held_at_end": true
+    },
+    {
+      "child": 12,
+      "parent": 7,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 1.1321858753087575,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 58.92,
+      "held_at_end": true
+    },
+    {
+      "child": 13,
+      "parent": 9,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 1.6787498310287696,
+      "k_max_rad_s": 30.51045916281549,
+      "first_locked_s": 57.03,
+      "held_at_end": true
+    },
+    {
+      "child": 13,
+      "parent": 8,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 1.6911607888905529,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 57.08,
+      "held_at_end": true
+    },
+    {
+      "child": 14,
+      "parent": 10,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.9684801232488661,
+      "k_max_rad_s": 13.622772765278523,
+      "first_locked_s": 58.25,
+      "held_at_end": true
+    },
+    {
+      "child": 15,
+      "parent": 11,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.8830912254451664,
+      "k_max_rad_s": 11.860261110120181,
+      "first_locked_s": 66.13,
+      "held_at_end": true
+    },
+    {
+      "child": 15,
+      "parent": 10,
+      "ratio": "3/1",
+      "coincident_partials": "child 1 = parent 3",
+      "coupled": false,
+      "start_beat_hz": 0.7385005903368436,
+      "k_max_rad_s": 0.0,
+      "first_locked_s": 66.68,
+      "held_at_end": true
+    },
+    {
+      "child": 16,
+      "parent": 14,
+      "ratio": "2/1",
+      "coincident_partials": "child 1 = parent 2",
+      "coupled": true,
+      "start_beat_hz": 0.7629101622035526,
+      "k_max_rad_s": 9.993203206075792,
+      "first_locked_s": 74.76,
+      "held_at_end": true
+    }
+  ],
+  "evidence": {
+    "measured (L0)": "lock times, beat rates, coherence and the end-of-run hold test are computed from the phases the audio is synthesised from; the lock condition and slip rate are Adler's.",
+    "perceptual models (L1)": "sensory dissonance (Plomp & Levelt 1965; Sethares 1993) and the fluctuation weighting (Zwicker & Fastl: strongest near 4 Hz) are models of perception, used as proxies; neither was fitted to a listener here.",
+    "breathing (L1)": "slow breathing near 0.1 Hz raises heart-rate variability when the listener actually breathes at that rate (resonance-frequency breathing; Lehrer & Gevirtz 2014). The swell offers a pace; it does not make anyone breathe.",
+    "relaxation and focus (L2, untested)": "that hearing beats slow to stillness, or a cascade climbing, relaxes or focuses a listener has not been measured. Test it: record ECG and respiration during silence and during playback, then compare `beats` (HRV) and `coherence` (RSA) between them."
+  },
+  "files": {
+    "cascade.wav": "stereo, 22050 Hz, peak −1 dBFS",
+    "timeline.csv": "per 0.25 s: voices, coherence, beat_index, max_beat_hz, dissonance, centroid_hz",
+    "cascade.json": "this report; --config cascade.json reproduces the run"
+  }
+}

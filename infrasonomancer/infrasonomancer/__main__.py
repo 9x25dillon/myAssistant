@@ -38,6 +38,7 @@ from .cardioresp import Scenario, assess, simulate
 from .coherence import pll_track, rate_coupling, stream_from_events, stream_from_signal, synchrogram, synchronize
 from .dualcast import DualCast, alias_frequency, analyse as analyse_dualcast, cast, cast_exact, counter_pair, \
     null_analysis, transmit
+from .cascade import CascadeConfig, cascade_report, cascade_timeline, recohere, render_cascade
 from .envelope import AXES, TARGETS, EnvelopeConfig, failure_map
 from .evolve import OBJECTIVES, EvolveConfig, map_elites
 from .formats import image_mask, read_events, read_png, read_series, write_csv, write_midi, write_png, write_wav
@@ -277,6 +278,33 @@ def cmd_dualcast(a: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_cascade(a: argparse.Namespace) -> int:
+    if a.config:
+        src = a.config.strip()
+        d = json.loads(src) if src.startswith("{") else json.loads(Path(src).read_text())
+        cfg = CascadeConfig.from_dict(d.get("config", d))                    # cascade.json or a bare config
+    else:
+        cfg = CascadeConfig(seed=a.seed, generators=tuple(g.strip() for g in a.generators.split(",")), depth=a.depth,
+                            f0=a.f0, f_max=a.f_max, min_cents=a.min_cents, beat_hz=a.beat_hz, coupling=a.coupling,
+                            adapt=not a.no_adapt, backreaction=a.backreaction, ramp_s=a.ramp, dwell_s=a.dwell,
+                            lock_hz=a.lock_hz, stagger_s=a.stagger, attack_s=a.attack, harmonics=a.harmonics,
+                            rolloff=a.rolloff, tilt_db_oct=a.tilt, breath_hz=a.breath_hz, breath_depth=a.breath_depth,
+                            tail_s=a.tail, fade_s=a.fade, max_seconds=a.max_seconds).validate()
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    c = recohere(cfg)
+    write_wav(out / "cascade.wav", render_cascade(c, a.sr, stereo=not a.mono), a.sr)
+    tl = cascade_timeline(c, sr=a.sr)
+    write_csv(out / "timeline.csv", list(tl), list(tl.values()))
+    rep = cascade_report(c, tl)
+    rep["files"] = {"cascade.wav": f"{'mono' if a.mono else 'stereo'}, {a.sr} Hz, peak −1 dBFS",
+                    "timeline.csv": "per 0.25 s: voices, coherence, beat_index, max_beat_hz, dissonance, centroid_hz",
+                    "cascade.json": "this report; --config cascade.json reproduces the run"}
+    (out / "cascade.json").write_text(json.dumps(_clean(rep), indent=2, ensure_ascii=False) + "\n")
+    _emit({k: v for k, v in rep.items() if k not in ("voice_table", "pair_table", "config")})
+    return 0
+
+
 def _scenario(a: argparse.Namespace) -> Scenario:
     if a.scenario:
         src = a.scenario.strip()
@@ -464,6 +492,37 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--depth", type=float, default=0.35)
     p.add_argument("--out", default="out/cardioresp")
     p.set_defaults(func=cmd_cardioresp)
+
+    p = sub.add_parser("cascade", help="voices that beat, lock and set off the next, higher generation")
+    k = CascadeConfig()
+    p.add_argument("--config", help="cascade.json from an earlier run (or a config JSON) to reproduce it")
+    p.add_argument("--seed", default=k.seed)
+    p.add_argument("--generators", default=",".join(k.generators), help="ratios > 1, e.g. 2,3 or 2,3/2 or 2,3,5")
+    p.add_argument("--depth", type=int, default=k.depth)
+    p.add_argument("--f0", type=float, default=None, help="root in Hz (default: from the seed, 55–82.4 Hz)")
+    p.add_argument("--f-max", type=float, default=k.f_max)
+    p.add_argument("--min-cents", type=float, default=k.min_cents, help="consonance guard; 0 turns it off")
+    p.add_argument("--beat-hz", type=float, default=k.beat_hz, help="detuning bound per voice")
+    p.add_argument("--coupling", type=float, default=k.coupling, help="> 1 locks; < 1 beats until it adapts")
+    p.add_argument("--no-adapt", action="store_true", help="keep each pair's coupling as sized at birth")
+    p.add_argument("--backreaction", type=float, default=k.backreaction)
+    p.add_argument("--ramp", type=float, default=k.ramp_s)
+    p.add_argument("--dwell", type=float, default=k.dwell_s)
+    p.add_argument("--lock-hz", type=float, default=k.lock_hz)
+    p.add_argument("--stagger", type=float, default=k.stagger_s)
+    p.add_argument("--attack", type=float, default=k.attack_s)
+    p.add_argument("--harmonics", type=int, default=k.harmonics)
+    p.add_argument("--rolloff", type=float, default=k.rolloff)
+    p.add_argument("--tilt", type=float, default=k.tilt_db_oct, help="dB per octave above f0")
+    p.add_argument("--breath-hz", type=float, default=k.breath_hz, help="slow swell; 0 turns it off")
+    p.add_argument("--breath-depth", type=float, default=k.breath_depth)
+    p.add_argument("--tail", type=float, default=k.tail_s)
+    p.add_argument("--fade", type=float, default=k.fade_s)
+    p.add_argument("--max-seconds", type=float, default=k.max_seconds)
+    p.add_argument("--sr", type=int, default=22050)
+    p.add_argument("--mono", action="store_true")
+    p.add_argument("--out", default="out/cascade")
+    p.set_defaults(func=cmd_cascade)
 
     p = sub.add_parser("envelope", help="MAP-Elites over scenarios: where do the instruments fail?")
     p.add_argument("--target", choices=TARGETS, default=EnvelopeConfig.target)
